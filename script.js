@@ -46,7 +46,7 @@ function listMovies() {
     var moviesSearhResult = response
     var movieNumber = 1
 
-    for (var = 0; i < moviesSearchResult.length; i++) {
+    for (var i = 0; i < moviesSearchResult.length; i++) {
 
         // put movies into DOM
         $('#movie${movieNumber}').find('h5').text(response[i].title);
