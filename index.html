@@ -2,66 +2,162 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tyndre</title>
-    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
-    <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text.css" href="./assets/style.css">
+  <!-- links -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tyndre</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet"/>
 
+  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<!-- nav bar -->
 <body>
-<section class="hero">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column is-6">
-          <h1 class="title is-spaced">TYNDRE</h1>
-          <p class="subtitle">tyndre.love.care...t.l.c.</p>
-          <div class="columns">
-            <div class="column is-half-desktop">
-              <form>
-                <div class="field">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="food">
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="movie">
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="location">
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <button class="button is-primary">find</button>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <label class="checkbox">
-                      <div class="control"></div>
-                    </label>
-                  </div>
-                </div>
-              </form>
-            </div>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- logo nav bar -->
+        <a class="navbar-item">
+          <img src="" width="120" height="100" alt="tyndre">
+        </a>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item">
+              about
+            </a>
+            <a class="navbar-item">
+              team
+            </a>
+            <a class="navbar-item">
+              contact
+            </a>
           </div>
         </div>
-        <div class="column is-6"><img src="/images/titanic.jpeg" alt="TitaNIC"></div>
-      </div>
-    </div>
-  </div>
-</section>
+      </nav>
+      <!-- hero..jumbotron -->
+      <section class="hero is-black">
+       <div class="hero-body">
+          <div class="container">
+            <h1 class="title-1 has-text-centered">
+              tyndre
+            </h1>
+            <h2 class="subtitle-1 is-size-7 has-text-centered has-text-weight-bold">
+              tyndre.love.care
+            </h2>
+          </div>
+        </div>
+      </section>
+      <!-- time section -->
+        <section class="section">
+          <div class="container">
+            <h1 class="title">pick a time!</h1>
+            <h2 class="subtitle">
+            choose a specific time for a special time.
+            </h2>
+              <label class="label">timing is everything</label>
+              <input type="date">
+              <input type="time">
+            </div>
+            <button class="button is-dark">go!</button>
+          </div>
+          
+        </section>
+        <!-- map/location section -->
+      
+        <section class="section">
+          <div class="container">
+            <h1 class="title">where ya' located?</h1>
+            <h2 class="subtitle">
+             choose the perfect  location.
+            </h2>
+            <div class="field">
+              <label class="label">location</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="where...">
+              </div>
+              <button class="button is-dark">go!</button>
+            
+          </div>
+        </section>
+      <!-- food section -->
+     
+        <section class="section">
+          <div class="container">
+            <h1 class="title">idc, you choose!</h1>
+            <h2 class="subtitle">
+             lets pick where to eat.
+            </h2>
+            <div class="field">
+              <label class="label">hungry?</label>
+              <div class="field">
+                
+                <div class="control">
+                  <div class="select">
+                    <select name="field-name">
+                      <option>italian</option>
+                      <option>chinese</option>
+                      <option>thai</option>
+                      <option>vietnamese</option>
+                      <option>mexican</option>
+                      <option>french</option>
+                      <option>coffee</option>
+                      <option>desert</option>
+                      <option>american</option>
+                      <option>deli</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+        </section>
+        <!-- movie section -->
+        <section class="section">
+          <div class="container">
+            <h1 class="title">popcorn time...</h1>
+            <h2 class="subtitle">
+            lets choose what to watch...
+            </h2>
+            <div class="field">
+              <label class="label is-white">movie and chill?</label>
+              <div class="field">
+                <div class="field">
+                  
+                  <div class="control">
+                    <div class="select">
+                      <select name="field-name">
+                        <option>comedy</option>
+                        <option>thriller</option>
+                        <option>drama</option>
+                        <option>action</option>
+                        <option>romance</option>
+                        <option>children</option>
+                        <option>foreign</option>
+                        <option>horror</option>
+                        <option>animated</option>
+                        <option>documentary</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </section>
+       
+
+       
+        
+
+
+           
+        
+       
+        <script src="~bulma-calendar/dist/js/bulma-calendar.min.js"></script>
 </body>
 
 </html>
