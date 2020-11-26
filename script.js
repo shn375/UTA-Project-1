@@ -14,10 +14,10 @@ var yelpApiPrefix = "https://api.yelp.com/v3/businesses/search?";
 var genresSelected = "";
 var dateSelected = "";
 var zipCode = "";
-var raduis = "";
+var radius = "";
 
 // Initialize all input of date type.
-const calendars = bulmaCalendar.attach('[type="date"]', options);
+// const calendars = bulmaCalendar.attach('[type="date"]', options);
 
 
 
@@ -25,8 +25,15 @@ const calendars = bulmaCalendar.attach('[type="date"]', options);
 
 // use ajax to get movies information
 function getMovies() {
+
+    // Hardcode to verify API
+    var genresSelected = "comedy";
+    var dateSelected = "2020-11-27";
+    var zipCode = "78613";
+    var radius = "5";
+
     $.ajax({
-        url: graceNoteMoviePrefix + genresSelected + dateSelected + zipCode + radius + apiKey,
+        url: graceNoteMoviePrefix + "genres="+ genresSelected + "&startDate=" + dateSelected + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi,
         method: "GET",
         error: function (err) {
             alert("The input was not found. Please check your spelling")
@@ -34,24 +41,40 @@ function getMovies() {
         }
     })
         .then(function (response) {
-            listMovies();
+            console.log(response[0]);
+            console.log(response[0].title);
+            console.log(response[0].genres);
+
+            var genresArray = response[0].genres;
+            console.log(genresArray);
+            var genresSearch = "Action"
+
+            if (genresArray.includes(genresSearch)) {
+                console.log('yes array includes ' + genresSearch);
+
+            }
+
+            // add only movies that include genresSearch into a new array then pass it renderMovies function
+    
+
+            // renderMoviesResult(movieArrayMatch);
         })
      
 }
 
 
 // to display movie search result
-function listMovies() {
+function renderMoviesResult() {
 
-    var moviesSearhResult = response
-    var movieNumber = 1
+    console.log(movieArrayMatch);
 
-    for (var i = 0; i < moviesSearchResult.length; i++) {
+    for (var i = 0; i < movieArrayMatch.length; i++) {
 
         // put movies into DOM
-        $('#movie${movieNumber}').find('h5').text(response[i].title);
-        $('#movie${movieNumber}').find('.moviePic').attr('src', response[i].preferredImage.uri);
-        $('#movie${movieNumber}').find('p').text(response[i].showtimes.theatre.name);
+        $('#mov-result-${i}').find('.title').text(movieArrayMatch[0]);
+        $('#mov-result-${i}').find('.genres').text(movieArrayMatch[1]);
+        $('#mov-result-${i}').find('.movieThumb').attr('src', movieArrayMatch[2]);
+        $('#mov-result-${i}').find('.showTime').text(response[i].showtimes.theatre.name);
 
 
 
@@ -71,11 +94,14 @@ function listMovies() {
 
 //////////////////////////// EXECUTION ////////////////////////////////////////
 
-// Loop on each calendar initialized
-calendars.forEach(calendar => {
-    // Add listener to date:selected event
-    calendar.on('date:selected', date => {
-    console.log(date);
-    });
-    });
+// // Loop on each calendar initialized
+// calendars.forEach(calendar => {
+//     // Add listener to date:selected event
+//     calendar.on('date:selected', date => {
+//     console.log(date);
+//     });
+//     });
     
+
+
+getMovies();

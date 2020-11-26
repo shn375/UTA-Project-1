@@ -10,7 +10,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet" />
 
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-  <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
+  <!-- <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet"> -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="./assets/style.css">
@@ -81,9 +81,10 @@
       </div>
 
       <div class="column is-10">
-        <h1 class=is-size-1>MAP DISPLAY HERE</h1>
+        <!-- <h1 class=is-size-1>MAP DISPLAY HERE</h1> -->
+        <br>
         <!-- Need to add responsive here -->
-        <div id='map' style='width: 100%; height: 600px;'></div>
+        <div id='map' style='width: 1600px; height: 600px;'></div>
         <script>
           // TO MAKE THE MAP APPEAR YOU MUST
           // ADD YOUR ACCESS TOKEN FROM
@@ -92,8 +93,8 @@
           var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-            center: [-74.5, 40], // starting position [lng, lat]
-            zoom: 9 // starting zoom
+            center: [-97.733330, 30.266666], // starting position [lng, lat]
+            zoom: 12 // starting zoom
           });
         </script>
       </div>
@@ -249,66 +250,80 @@
       </div>
       <!--END OF MIDDLE COLUMN-->
 
+
+
+
+
       <!-- RIGHT COLUMN MOVIES CHOICE-->
       <div class="column is-5">
+
         <h1 class=is-size-1>MOVIES CHOICES</h1>
 
+        <!-- MOVIE CARD 1 -->
         <div id= "mov-result-1" class="card-1">
           <div class="card-header">
-            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+            <h1 class="title has-text-weight-bold">Home Slice Pizza</h1>
           </div>
           <div class="card-content">
-            <p class=cuisine>Pizza</p>
-            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <p class=genres>Pizza</p>
+            <p class=showTime>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
             <figure class="image is-128x128">
-              <img
+              <img class="movieThumb"
                 src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
                 alt="">
             </figure>
           </div>
         </div>
+
+        <!-- MOVIE CARD 2-->
         <div id= "mov-result-2" class="card-2">
           <div class="card-header">
-            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+            <h1 class="title has-text-weight-bold">Home Slice Pizza</h1>
           </div>
           <div class="card-content">
-            <p class=cuisine>Pizza</p>
-            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <p class=genres>Pizza</p>
+            <p class=showTime>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
             <figure class="image is-128x128">
-              <img
+              <img class="movieThumb"
                 src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
                 alt="">
             </figure>
           </div>
         </div>
+
+        <!-- MOVIE CARD 3-->
         <div id= "mov-result-3" class="card-3">
           <div class="card-header">
-            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+            <h1 class="title has-text-weight-bold">Home Slice Pizza</h1>
           </div>
           <div class="card-content">
-            <p class=cuisine>Pizza</p>
-            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <p class=genres>Pizza</p>
+            <p class=showTime>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
             <figure class="image is-128x128">
-              <img
+              <img class="movieThumb"
                 src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
                 alt="">
             </figure>
           </div>
         </div>
+
+        <!-- MOVIE CARD 4-->
         <div id= "mov-result-4" class="card-4">
           <div class="card-header">
-            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+            <h1 class="title has-text-weight-bold">Home Slice Pizza</h1>
           </div>
           <div class="card-content">
-            <p class=cuisine>Pizza</p>
-            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <p class=genres>Pizza</p>
+            <p class=showTime>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
             <figure class="image is-128x128">
-              <img
+              <img class="movieThumb"
                 src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
                 alt="">
             </figure>
           </div>
         </div>
+        
+        
       </div>
       <!-- END OF RIGHT COLUMN-->
 
@@ -321,7 +336,7 @@
 
 
 
-  <!-- TEAM SECTIOn -->
+  <!-- TEAM SECTION -->
   <section class="team">
     <div class="container2 has-text-centered py-4">
       <h2 class="title">the team</h2>
@@ -379,6 +394,10 @@
     </div>
   </section>
 
+  <!-- jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Our jsScript -->
+  <script src="script.js"></script>
 </body>
 
 </html>
