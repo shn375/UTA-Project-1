@@ -1,8 +1,8 @@
 .section{
     background-color:black;
     margin:20px;
-    width: 500px;
-    margin-right: 0%;
+    /* width: 500px;
+    margin-right: 0%; */
     
     
 }
@@ -42,7 +42,7 @@
     
 
 .field{
-    width: 400px;
+    /* width: 400px; */
 }
 .hero-body{
     height: 500px;
