@@ -25,12 +25,6 @@ var poster = "";
 // const calendars = bulmaCalendar.attach('[type="date"]', options);
 
 
-
-//////////////////////////// FUNCTION ////////////////////////////////////////
-
-// use ajax to get movies information
-function getMovies() {
-
     // Hardcode to verify API
     var genresSelected = "comedy";
     var dateSelected = "2020-11-27";
@@ -39,14 +33,20 @@ function getMovies() {
     var currentDate = moment().format('YYYY-MM-DD');
     console.log(currentDate);
 
+    var movieGenresMatch = [];
+    var genresSearch = "Action";
+    var poster = "";
+
+
+//////////////////////////// FUNCTION ////////////////////////////////////////
+
+// use ajax to get movies information
+function getMovies() {
+
+
+
     // var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSelected + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi
-
     var movieUrlRequest = graceNoteMoviePrefix + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi
-
-
-    console.log(movieUrlRequest);
-
-
 
     $.ajax({
         // url: graceNoteMoviePrefix + "genres="+ genresSelected + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi,
@@ -59,10 +59,14 @@ function getMovies() {
         }
     })
         .then(function (response) {
-            console.log(response.length);
-            console.log(response[0]);
-            console.log(response[0].title);
-            console.log(response[0].genres);
+
+
+            return addNewArray(response);
+
+            // console.log(response.length);
+            // console.log(response[0]);
+            // console.log(response[0].title);
+            // console.log(response[0].genres);
 
             // console.log(genresArray);
             // var genresSearch = "Action"
@@ -72,81 +76,13 @@ function getMovies() {
 
             // }
 
-            var movieGenresMatch = [];
-            var genresSearch = "Action";
-            var poster = "";
 
 
-
-            // OMDB REQUEST STILL NOT WORKING
-
-            // var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatch 
-
-            //     $.ajax({
-            //         url: omdbUrlRequest,
-            //         method: "GET",
-            //     })
-            //         .then(function (response) {
-            //         console.log("🚀 ~ file: script.js ~ line 101 ~ response", response)
-
-            //             poster = response.Poster;
-            //             // console.log("line 106 " + poster);
-            //             // console.log("line 106 " + typeof (poster));
-                        
-            //         })
-
-
-
-            for (i = 0; i < response.length; i++) {
-                var movieMatch = response[i].title.replace(/ /g,"_");
-                var genresMatch = response[i].genres;
-                var showtimesMatch = response[i].showtimes;
-                // var imageMatch = response[i].preferredImage.uri;
-                
-
-
-                if (genresMatch.includes(genresSearch)) {
-                    console.log(response[i].title + ' includes ' + genresSearch);
-                    // movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
-                    // console.log(movieGenresMatch);
-
-           
-
-
-
-                    movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: poster });
-                    console.log("line 109" + movieGenresMatch );
-
-                 
-
-                }
-
-            }
-
-            console.log("line 130 movieGenresMatch is " + movieGenresMatch);
-
-            var newMovieArray = []
-            for (i = 0; i < movieGenresMatch.length; i++) {
-                // console.log(movieGenresMatch[i].Title + movieGenresMatch[i].Showtimes);
-                // console.log(movieGenresMatch[i].Showtimes.length);
-                for (y = 0; y < movieGenresMatch[i].Showtimes.length; y++) {
-                    // console.log(movieGenresMatch[i].Showtimes[y]);
-                    console.log(movieGenresMatch[i].Title + movieGenresMatch[i].Showtimes[y].theatre.name);
-                    console.log(movieGenresMatch[i].Title + movieGenresMatch[i].Showtimes[y].dateTime);
-                    // newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: movieGenresMatch[i].Showtimes[y].dateTime }); //working
-                    newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: movieGenresMatch[i].Showtimes[y].dateTime, Image: movieGenresMatch[i].Image });
-                }
-
-                console.log('line 130' + newMovieArray);
-
-                // }
-            }
 
 
             // add only movies that include genresSearch into a new array then pass it renderMovies function
 
 
-            renderMoviesResult(newMovieArray);
         })
                     // console.log("🚀 ~ file: script.js ~ line 140 ~ omdbUrlRequest", omdbUrlRequest)
                     // console.log("🚀 ~ file: script.js ~ line 140 ~ omdbUrlRequest", omdbUrlRequest)
@@ -155,30 +91,7 @@ function getMovies() {
 }
 
 
-// function getPoster(movieMatch) {
-    
-//     console.log("getPoster" + movieMatch);
-//     var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatch 
-//     // console.log("🚀 ~ file: script.js ~ line 126 ~ getPoster ~ omdbUrlRequest", omdbUrlRequest)
 
-//     $.ajax({
-//         url: omdbUrlRequest,
-//         method: "GET",
-
-//     })
-//     .then(function (response) {
-//     console.log("🚀 ~ file: script.js ~ line 141 ~ response", response)
-
-//         var imageMatch = response[0].Poster;
-//         // console.log("🚀 ~ file: script.js ~ line 140 ~ imageURL", imageMatch)
-//         // return imageMatch;
-        
-//     })
-//         console.log("🚀 ~ file: script.js ~ line 149 ~ imageMatch", imageMatch)
-
-
-
-// }
 
 // to display movie search result
 function renderMoviesResult(newMovieArray) {
@@ -192,8 +105,8 @@ var currentTheatre = "";
     // for (var i = 0; i < 1; i++) {
 
         // console.log("#mov-result-"+ cardNumber);
-        console.log("line 185" + newMovieArray[i].Title);
-        console.log("line 185" + newMovieArray[i].Image);
+        // console.log("line 185" + newMovieArray[i].Title);
+        // console.log("line 185" + newMovieArray[i].Image);
 
         var movieName = newMovieArray[i].Title;
         var theatre = newMovieArray[i].Theatre;
@@ -210,8 +123,8 @@ var currentTheatre = "";
         }
 
         var cardNumber = "mov-result-"+ startCard;
-        console.log(cardNumber);
-        console.log("🚀 ~ file: script.js ~ line 140 ~ renderMoviesResult ~ cardNumber", cardNumber)
+        // console.log(cardNumber);
+        // console.log("🚀 ~ file: script.js ~ line 140 ~ renderMoviesResult ~ cardNumber", cardNumber)
 
 
 
@@ -229,23 +142,23 @@ var currentTheatre = "";
 
 
         
-        console.log("🚀 ~ file: script.js ~ line 147 ~ renderMoviesResult ~ currentMovieName", currentMovieName)
-        console.log("🚀 ~ file: script.js ~ line 148 ~ renderMoviesResult ~ currentTheatre", currentTheatre)
+        // console.log("🚀 ~ file: script.js ~ line 147 ~ renderMoviesResult ~ currentMovieName", currentMovieName)
+        // console.log("🚀 ~ file: script.js ~ line 148 ~ renderMoviesResult ~ currentTheatre", currentTheatre)
 
         // same movie sam theatre scenarios
         // if ((movieName = currentMovieName) && (theatre = currentTheatre)) {
         if (movieName === currentMovieName) {
-            console.log("equal");
+            // console.log("equal");
             cardNumber = currentCardNumber;
             $(`#${cardNumber}`).find('.showTime').append( "<p>"+newMovieArray[i].Theatre+"</p>" );
             $(`#${cardNumber}`).find('.showTime').append( "<p>"+newMovieArray[i].Showtimes+"</p>" );
 
         } else {
-            console.log("not equal");
+            // console.log("not equal");
             $(`#${cardNumber}`).find('.mov-title').text(newMovieArray[i].Title);
-            $(`#${cardNumber}`).find('.genres').text(newMovieArray[i].Theatre);
+            $(`#${cardNumber}`).find('.theatre').text(newMovieArray[i].Theatre);
             $(`#${cardNumber}`).find('.showTime').text(newMovieArray[i].Showtimes); // working
-            $(`#${cardNumber}`).find('.movieThumb').attr('src', newMovieArray[i].Image);
+            // $(`#${cardNumber}`).find('.movieThumb').attr('src', newMovieArray[i].Image);
 
                     // ++ startCard
 
@@ -253,11 +166,11 @@ var currentTheatre = "";
         }
 
         var currentMovieName = newMovieArray[i].Title;
-        console.log("🚀 ~ file: script.js ~ line 162 ~ renderMoviesResult ~ currentMovieName", currentMovieName)
+        // console.log("🚀 ~ file: script.js ~ line 162 ~ renderMoviesResult ~ currentMovieName", currentMovieName)
         var currentCardNumber = cardNumber;
-        console.log("🚀 ~ file: script.js ~ line 164 ~ renderMoviesResult ~ currentCardNumber", currentCardNumber)
+        // console.log("🚀 ~ file: script.js ~ line 164 ~ renderMoviesResult ~ currentCardNumber", currentCardNumber)
         var currentTheatre = theatre;
-        console.log("🚀 ~ file: script.js ~ line 166 ~ renderMoviesResult ~ currentTheatre", currentTheatre)
+        // console.log("🚀 ~ file: script.js ~ line 166 ~ renderMoviesResult ~ currentTheatre", currentTheatre)
 
         // $(`#day${dayNumber}`).find('h5').text(convertUnixTime(fiveDaysArray[i].dt * 1000));
 
@@ -269,12 +182,71 @@ var currentTheatre = "";
 
 
     }
+    // END OF FOR LOOP
 
-
+    
 
 }
 
 
+
+function addNewArray(response) {
+
+            // FILTER ONLY GENRES THAT MATCH SELECTED AND PUSH INTO NEW ARRAY newMovieArray
+            for (i = 0; i < response.length; i++) {
+                // for (i = 0; i < 1; i++) {
+                    var movieMatch = response[i].title;
+                    var movieMatchNoSpace = response[i].title.replace(/ /g,"_");
+                    var genresMatch = response[i].genres;
+                    var showtimesMatch = response[i].showtimes;
+                    // var imageMatch = response[i].preferredImage.uri;
+                    
+    
+                    if (genresMatch.includes(genresSearch)) {
+                        console.log("li 205 " + response[i].title + ' includes ' + genresSearch);
+                        // movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
+                        // console.log(movieGenresMatch);
+    
+    
+    
+                        movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: poster });
+                        // console.log("line 122" + movieGenresMatch );
+    
+                    }
+                }
+    
+                // ADDING MATCH ONES TO NEWMOVIE ARRAY
+    
+                var newMovieArray = []
+                // console.log("line 130 movieGenresMatch.length" + movieGenresMatch.length);
+    
+                for (i = 0; i < movieGenresMatch.length; i++) {
+                    // console.log(movieGenresMatch[i].Title + movieGenresMatch[i].Showtimes);
+                    // console.log(movieGenresMatch[i].Showtimes.length);
+                    for (y = 0; y < movieGenresMatch[i].Showtimes.length; y++) {
+                        // console.log(movieGenresMatch[i].Showtimes[y]);
+                        // console.log("line130 " + movieGenresMatch[i].Title + movieGenresMatch[i].Showtimes[y].theatre.name);
+                        // console.log("line131 " + movieGenresMatch[i].Title + movieGenresMatch[i].Showtimes[y].dateTime);
+                        // newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: movieGenresMatch[i].Showtimes[y].dateTime }); //working
+    
+    
+                        // console.log("line135 " + movieGenresMatch[i].Title);
+                        // console.log("line135 " + movieGenresMatch[i].Showtimes[y].theatre.name);
+                        // console.log("line135 " + movieGenresMatch[i].Showtimes[y].dateTime);
+                        // console.log("line145 " + movieGenresMatch[i].Image);
+                        
+    
+                        newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: movieGenresMatch[i].Showtimes[y].dateTime, Image: movieGenresMatch[i].Image });
+                    }
+    
+                    console.log('line 151' + newMovieArray);
+    
+                    // }
+                }
+
+                renderMoviesResult(newMovieArray);
+
+}
 
 
 
@@ -294,3 +266,82 @@ var currentTheatre = "";
 $(document).ready(() => {
     getMovies();
 })
+
+// $(document).ready(() => {
+//     getPoster();
+// })
+
+
+
+///////////////////TRYING CODE ////////////////////////
+
+// function getPoster(movieMatch) {
+    
+//     console.log("getPoster" + movieMatch);
+//     var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatch 
+//     // console.log("🚀 ~ file: script.js ~ line 126 ~ getPoster ~ omdbUrlRequest", omdbUrlRequest)
+
+//     $.ajax({
+//         url: omdbUrlRequest,
+//         method: "GET",
+
+//     })
+//     .then(function (response) {
+//     console.log("🚀 ~ file: script.js ~ line 268 ~ response", response)
+
+//         var poster = response.Poster;
+//         console.log("🚀 ~ file: script.js ~ line 271 ~ poster", poster)
+//         // return imageMatch;
+        
+//     })
+//         // console.log("🚀 ~ file: script.js ~ line 149 ~ imageMatch", imageMatch)
+
+
+//         console.log("line 278" + movieMatch);
+
+// }
+
+
+
+
+
+
+                    // // OMDB REQUEST STILL NOT WORKING
+
+                    // var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatch 
+                    // console.log("line77" + omdbUrlRequest);
+                    //     $.ajax({
+                    //         url: omdbUrlRequest,
+                    //         method: "GET",
+                    //     })
+                    //         .then(function (response) {
+                    //         console.log("🚀 ~ file: script.js ~ line 82 ~ response", response)
+
+                    //             poster = response.Poster;
+                    //             console.log("line 103 " + poster);
+                    //             // console.log("line 106 " + typeof (poster));
+
+
+                    //             console.log("line 108" + movieMatch);
+                    //             console.log("line 108" + genresSearch);
+                    //             console.log("line 108" + showtimesMatch);
+                    //             console.log("line 108" + poster);
+
+                    //             movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: poster });
+                    //             console.log("line 108" + movieGenresMatch );
+
+                    //             return movieGenresMatch;
+                    //         })
+                    
+                    //         console.log("li109 " + poster);
+
+
+
+                    // $.ajax({
+                    //     var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatch
+                    //     url: omdbUrlRequest,
+                    //     method: "GET"
+                    // })
+                    //     .then(function (response) {
+                    //         return addPoster(response);
+                    //     })
