@@ -74,9 +74,10 @@
             <div class="field">
               <label class="label">location</label>
               <div class="control">
-                <input class="input" type="text" placeholder="where...">
+                <input class="input" type="text" placeholder="Input Zipcode">
               </div>
-              <button class="button is-dark">go!</button>
+              <!-- THAMMARAK ADD ID -->
+              <button id="location-button" class="button is-dark">go!</button>
         </section>
       </div>
 
@@ -165,8 +166,15 @@
                 <div class="field">
 
                   <div class="control">
-                    <div class="select">
-                      <select name="field-name">
+
+                    <!-- THAMMARAK ADD CLASS TARGET -->
+                    <div class="target select">
+                      
+                      <!-- THAMMARAK ADD ID MOVIE SELECTIONS -->
+                      <select id="movie-selections" name="field-name">
+                        
+                        <!-- THAMMARAK ADD GENRES -->
+                        <option>select genres</option>
                         <option>comedy</option>
                         <option>thriller</option>
                         <option>drama</option>
@@ -178,6 +186,7 @@
                         <option>animated</option>
                         <option>documentary</option>
                       </select>
+
                     </div>
                   </div>
                 </div>
