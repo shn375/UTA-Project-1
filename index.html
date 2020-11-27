@@ -7,83 +7,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>tyndre</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet" />
 
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="./assets/style.css">
 </head>
-<!-- nav bar -->
-<body>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-            data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <!-- logo nav bar -->
-        <a class="navbar-item">
-          <img src="" width="120" height="100" alt="tyndre">
-        </a>
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item">
-              about
-            </a>
-            <a class="navbar-item">
-              team
-            </a>
-            <a class="navbar-item">
-              contact
-            </a>
-          </div>
-        </div>
-      </nav>
-      <!-- hero..jumbotron -->
-      <section class="hero is-black">
-       <div class="hero-body">
-          <div class="container">
-            <h1 class="title-1 has-text-centered">
-              tyndre
-            </h1>
-            <h2 class="subtitle-1 is-size-7 has-text-centered has-text-weight-bold">
-              tyndre.love.care
-            </h2>
-          </div>
-        </div>
-      </section>
 
-      <!-- map/location section -->
-      <div class="columns">
-        <div class="column is-two-fifths">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">where ya' located?</h1>
-              <h2 class="subtitle">
-               let's choose the perfect  location.
-              </h2>
-              <div class="field">
-                <label class="label">location</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="where...">
-                </div>
-              </div>
-                <button class="button is-dark">go!</button>
-            </div>
-          </section>
-        </div>
-        <div class="column is-half">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">where ya' located?</h1>
-              <h2 class="subtitle">
-               let's choose the perfect  location.
-              </h2>
-              <div class="field">
-                <label class="label">location</label>
+
+<!-- nav bar -->
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- logo nav bar -->
+    <a class="navbar-item">
+      <img src="" width="120" height="100" alt="tyndre">
+    </a>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item">
+          about
+        </a>
+        <a class="navbar-item">
+          team
+        </a>
+        <a class="navbar-item">
+          contact
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- hero..jumbotron -->
+  <section class="hero is-black">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title-1 has-text-centered">
+          tyndre
+        </h1>
+        <h2 class="subtitle-1 is-size-7 has-text-centered has-text-weight-bold">
+          tyndre.love.care
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <div class="block">
+    <div class="columns">
+      <div class="column is-2">
+        <section class="section">
+          <div class="container is-fluid">
+            <h1 class="title">where ya' located?</h1>
+            <h2 class="subtitle">
+              let's choose the perfect location.
+            </h2>
+            <div class="field">
+              <label class="label">location</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="where...">
               </div>
                 <button class="button is-dark">go!</button>
             </div>
@@ -103,301 +94,308 @@
                 <input type="date">
                 <input type="time">
               <button class="button is-dark">go!</button>
-            </div>
-          </section>
-        </div>
-        <div class="column is-one-third">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">Result 1</h1>
-              <h2 class="subtitle">
-              choose a specific time for a special time.
-              </h2>
-                <label class="label">timing is everything</label>
-                <input type="date">
-                <input type="time">
-              <button class="button is-dark">go!</button>
-            </div>
-          </section>
-        </div>
-        <div class="column is-one-third">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">Result 2
-              </h1>
-              <h2 class="subtitle">
-              choose a specific time for a special time.
-              </h2>
-                <label class="label">timing is everything</label>
-                <input type="date">
-                <input type="time">
-              <button class="button is-dark">go!</button>
-            </div>
-          </section>
-        </div>
+        </section>
       </div>
-      <!-- food section -->
-      <div class="columns">
-        <div class="column is-one-quarter">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">
-                idc, you choose!
-              </h1>
-              <h2 class="subtitle">
-               let's pick where to eat.
-              </h2>
-              <div class="field">
-                <label class="label">
-                  hungry?
-                </label>
-                <div class="field">
-                  <div class="control">
-                    <div class="select">
-                      <select name="field-name">
-                        <option>italian</option>
-                        <option>chinese</option>
-                        <option>thai</option>
-                        <option>vietnamese</option>
-                        <option>mexican</option>
-                        <option>french</option>
-                        <option>coffee</option>
-                        <option>desert</option>
-                        <option>american</option>
-                        <option>deli</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div class="column is-one-third">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">Result 1</h1>
-              <h2 class="subtitle">
-                let's pick where to eat.
-              </h2>
-              <div class="field">
-                <label class="label">hungry?</label>
-                <div class="field">
-                  <div class="control">
-                    <div class="select">
-                      <select name="field-name">
-                        <option>italian</option>
-                        <option>chinese</option>
-                        <option>thai</option>
-                        <option>vietnamese</option>
-                        <option>mexican</option>
-                        <option>french</option>
-                        <option>coffee</option>
-                        <option>desert</option>
-                        <option>american</option>
-                        <option>deli</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div class="column is-one-third">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">Result 2</h1>
-              <h2 class="subtitle">
-                let's pick where to eat.
-              </h2>
-              <div class="field">
-                <label class="label">hungry?</label>
-                <div class="field">
-                  <div class="control">
-                    <div class="select">
-                      <select name="field-name">
-                        <option>italian</option>
-                        <option>chinese</option>
-                        <option>thai</option>
-                        <option>vietnamese</option>
-                        <option>mexican</option>
-                        <option>french</option>
-                        <option>coffee</option>
-                        <option>desert</option>
-                        <option>american</option>
-                        <option>deli</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-        <!-- movie section -->
-      <div class="columns">
-        <div class="column is-one-quarter">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">
-                movie and chill?
-              </h1>
-              <h2 class="subtitle">
-              lets choose what to watch...
-              </h2>
-              <div class="field">
-                <label class="label is-white">
-                  popcorn time.
-                </label>
-                <div class="field">
-                  <div class="field">
-                    <div class="control">
-                      <div class="select">
-                        <select name="field-name">
-                          <option>comedy</option>
-                          <option>thriller</option>
-                          <option>drama</option>
-                          <option>action</option>
-                          <option>romance</option>
-                          <option>children</option>
-                          <option>foreign</option>
-                          <option>horror</option>
-                          <option>animated</option>
-                          <option>documentary</option>
-                        </select>
-                      </div>
-                     </div> 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div class="column is-one-third">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">
-                Result 1
-              </h1>
-              <h2 class="subtitle">
-              lets choose what to watch...
-              </h2>
-              <div class="field">
-                <label class="label is-white">
-                  popcorn time.
-                </label>
-                <div class="field">
-                  <div class="field">
-                    <div class="control">
-                      <div class="select">
-                        <select name="field-name">
-                          <option>comedy</option>
-                          <option>thriller</option>
-                          <option>drama</option>
-                          <option>action</option>
-                          <option>romance</option>
-                          <option>children</option>
-                          <option>foreign</option>
-                          <option>horror</option>
-                          <option>animated</option>
-                          <option>documentary</option>
-                        </select>
-                      </div>
-                     </div> 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div class="column is-one-third">
-          <section class="section">
-            <div class="container is-fluid">
-              <h1 class="title">
-                Result 2
-              </h1>
-              <h2 class="subtitle">
-              lets choose what to watch...
-              </h2>
-              <div class="field">
-                <label class="label is-white">
-                  popcorn time.
-                </label>
-                <div class="field">
-                  <div class="field">
-                    <div class="control">
-                      <div class="select">
-                        <select name="field-name">
-                          <option>comedy</option>
-                          <option>thriller</option>
-                          <option>drama</option>
-                          <option>action</option>
-                          <option>romance</option>
-                          <option>children</option>
-                          <option>foreign</option>
-                          <option>horror</option>
-                          <option>animated</option>
-                          <option>documentary</option>
-                        </select>
-                      </div>
-                     </div> 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>  
-        
-        <!-- Team -->
 
-        <section class="team">
-          <div class="container2 has-text-centered py-4">
-            <h2 class="title">the team</h2>
-            <p class="subtitle1 mb-6">We are the guys that made this whole thing possible</p>
-            <div class="columns is-multiline py-5">
-              <div class="column is-6 is-4-widescreen mb-6">
-                <div class="media">
-                  <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg" alt="Son Nguyen"></figure></div>
-                  <div class="media-content">
-                    <h4 class="title is-4">Son Nguyen</h4>
-                    <p class="subtitle">Java Script, HTML, CSS</p>
+      <div class="column is-10">
+        <h1 class=is-size-1>MAP DISPLAY HERE</h1>
+        <!-- Need to add responsive here -->
+        <div id='map' style='width: 100%; height: 600px;'></div>
+        <script>
+          // TO MAKE THE MAP APPEAR YOU MUST
+          // ADD YOUR ACCESS TOKEN FROM
+          // https://account.mapbox.com
+          mapboxgl.accessToken = 'pk.eyJ1IjoidGhhbW1hcmFrdSIsImEiOiJja2h5YW41cnUwYmloMnhxcXl5bzVseW9wIn0.MMXk4mPZiFq7EEXUxqTpJA';
+          var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 9 // starting zoom
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <!--RESTAURANT AND MOVIES PARTS-->
+  <div class="block">
+
+    <!--LEFT COLUMN-->
+    <div class="columns">
+      <div class="column is-2">
+
+        <!-- time section -->
+        <section class="section">
+          <div class="container is-fluid">
+            <h1 class="title">pick a time!</h1>
+            <h2 class="subtitle">
+              choose a specific time for a special time.
+            </h2>
+            <label class="label">timing is everything</label>
+            <input type="date">
+            <input type="time">
+          </div>
+          <button class="button is-dark">go!</button>
+        </section>
+
+        <!-- food section -->
+        <section class="section">
+          <div class="container is-fluid">
+            <h1 class="title">idc, you choose!</h1>
+            <h2 class="subtitle">
+              let's pick where to eat.
+            </h2>
+            <div class="field">
+              <label class="label">hungry?</label>
+              <div class="field">
+                <div class="control">
+                  <div class="select">
+                    <select name="field-name">
+                      <option>italian</option>
+                      <option>chinese</option>
+                      <option>thai</option>
+                      <option>vietnamese</option>
+                      <option>mexican</option>
+                      <option>french</option>
+                      <option>coffee</option>
+                      <option>desert</option>
+                      <option>american</option>
+                      <option>deli</option>
+                    </select>
                   </div>
                 </div>
               </div>
-              <div class="column is-6 is-4-widescreen mb-6">
-                <div class="media">
-                  <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg" alt="Thammarak"></figure></div>
-                  <div class="media-content">
-                    <h4 class="title is-4">Thammarak</h4>
-                    <p class="subtitle">Java Script, HTML, CSS</p>
+        </section>
+
+        <!-- movie section -->
+        <section class="section">
+          <div class="container is-fluid">
+            <h1 class="title">movie and chill?</h1>
+            <h2 class="subtitle">
+              lets choose what to watch...
+            </h2>
+            <div class="field">
+              <label class="label is-white">popcorn time.</label>
+              <div class="field">
+                <label class="label">hungry?</label>
+                <div class="field">
+                  <div class="control">
+                    <div class="select">
+                      <select name="field-name">
+                        <option>italian</option>
+                        <option>chinese</option>
+                        <option>thai</option>
+                        <option>vietnamese</option>
+                        <option>mexican</option>
+                        <option>french</option>
+                        <option>coffee</option>
+                        <option>desert</option>
+                        <option>american</option>
+                        <option>deli</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="column is-6 is-4-widescreen mb-6">
-                <div class="media">
-                  <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg" alt="Rick"></figure></div>
-                  <div class="media-content">
-                    <h4 class="title is-4">Rick</h4>
-                    <p class="subtitle">HTML, CSS, Presenter</p>
-                  </div>
-                </div>
-              </div>
-              <div class="column is-6 is-4-widescreen mb-6">
-                <div class="media">
-                  <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg" alt="Sterling Duke"></figure></div>
-                  <div class="media-content">
-                    <h4 class="title is-4">Sterling Duke</h4>
-                    <p class="subtitle">HTML, CSS</p>
-                  </div>
-                </div>
-              </div>
-           </div>
+        </section>
+
+      </div>
+      <!--END OF LEFT COLUMN-->
+
+
+      <!-- MIDDLE COLUMN RESTAURANT CHOICES -->
+      <div class="column is-5">
+        <h1 class=is-size-1>RESTAURANT CHOICES</h1>
+
+        <div id= "food-result-1" class="card-1">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
         </div>
-      </section>
-      
+        <div id= "food-result-2" class="card-2">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
+        </div>
+        <div id= "food-result-3" class="card-3">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
+        </div>
+        <div id= "food-result-4" class="card-4">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <!--END OF MIDDLE COLUMN-->
+
+      <!-- RIGHT COLUMN MOVIES CHOICE-->
+      <div class="column is-5">
+        <h1 class=is-size-1>MOVIES CHOICES</h1>
+
+        <div id= "mov-result-1" class="card-1">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
+        </div>
+        <div id= "mov-result-2" class="card-2">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
+        </div>
+        <div id= "mov-result-3" class="card-3">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
+        </div>
+        <div id= "mov-result-4" class="card-4">
+          <div class="card-header">
+            <h1 class="restaurantName has-text-weight-bold">Home Slice Pizza</h1>
+          </div>
+          <div class="card-content">
+            <p class=cuisine>Pizza</p>
+            <p class=timings>11 AM to 11 PM (Mon-Thu),11 AM to 12 Midnight (Fri-Sat),11 AM to 10 PM (Sun)</p>
+            <figure class="image is-128x128">
+              <img
+                src="https://b.zmtcdn.com/data/res_imagery/16912869_RESTAURANT_0f148925df0611d850745f5bbeff6546.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                alt="">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <!-- END OF RIGHT COLUMN-->
+
+
+    </div>
+    <!--END OF COLUMNS-->
+
+  </div>
+  <!--END OF BLOCK-->
+
+
+
+  <!-- TEAM SECTIOn -->
+  <section class="team">
+    <div class="container2 has-text-centered py-4">
+      <h2 class="title">the team</h2>
+      <p class="subtitle1 mb-6">We are the guys that made this whole thing possible</p>
+      <div class="columns is-multiline py-5">
+        <div class="column is-6 is-4-widescreen mb-6">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg"
+                  alt="Son Nguyen"></figure>
+            </div>
+            <div class="media-content">
+              <h4 class="title is-4">Son Nguyen</h4>
+              <p class="subtitle">Java Script, HTML, CSS</p>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6 is-4-widescreen mb-6">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg"
+                  alt="Thammarak"></figure>
+            </div>
+            <div class="media-content">
+              <h4 class="title is-4">Thammarak</h4>
+              <p class="subtitle">Java Script, HTML, CSS</p>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6 is-4-widescreen mb-6">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg" alt="Rick">
+              </figure>
+            </div>
+            <div class="media-content">
+              <h4 class="title is-4">Rick</h4>
+              <p class="subtitle">HTML, CSS, Presenter</p>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6 is-4-widescreen mb-6">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-64x64"><img class="is-rounded" src="./assets/images/random face.jpg"
+                  alt="Sterling Duke"></figure>
+            </div>
+            <div class="media-content">
+              <h4 class="title is-4">Sterling Duke</h4>
+              <p class="subtitle">HTML, CSS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </body>
 
 </html>
