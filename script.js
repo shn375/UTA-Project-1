@@ -13,6 +13,7 @@ var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?";
 var omdbApiKey = "5673ffbb";
 var omdbPrefix = "http://www.omdbapi.com/?apikey="
 
+
 var genresSelected = "";
 var dateSelected = "";
 var zipCode = "";
@@ -22,7 +23,9 @@ var radius = "";
 // Hardcode to verify API
 var genresSelected = "";
 var dateSelected = "2020-11-27";
-var zipCode = "78613";
+// var zipCode = "78613";
+var zipCode = "";
+
 var radius = "5";
 var currentDate = moment().format('YYYY-MM-DD');
 // console.log(currentDate);
@@ -44,7 +47,10 @@ function getMovies(zipCode, genresSearch) {
 
     // not able to search by genres need to search for all then filter by code
     // var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSelected + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi
-    var movieUrlRequest = graceNoteMoviePrefix + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi
+    var movieUrlRequest = graceNoteMoviePrefix + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi;
+
+    console.log("line 50 " + movieUrlRequest);
+
 
     $.ajax({
         url: movieUrlRequest,
@@ -56,10 +62,7 @@ function getMovies(zipCode, genresSearch) {
     })
         .then(function (response) {
             return addNewArray(response, zipCode, genresSearch);
-
-            // SHOULD I MOVE addNewArray Function here and also another AJAX for poster same as weather app
-
-
+            // return addNewArray(response, genresSearch);
         })
 
 
@@ -75,6 +78,8 @@ function addNewArray(response, zipCode, genresSearch) {
     console.log("line 67 " + genresSearch);
 
     console.log("typeof genresSearch " + typeof(genresSearch));
+    console.log("line 78 " + response.length);
+
 
     for (i = 0; i < response.length; i++) {
         // for (i = 0; i < 1; i++) {
@@ -83,6 +88,7 @@ function addNewArray(response, zipCode, genresSearch) {
 
         var genresMatch = response[i].genres;
         // convert response genres to lower case to compare with user genres selected
+
         for (x = 0; x < genresMatch.length; x++) {
             genresMatch[x] = genresMatch[x].toLowerCase();
         }
@@ -93,16 +99,24 @@ function addNewArray(response, zipCode, genresSearch) {
         var showtimesMatch = response[i].showtimes;
         var imageMatch = response[i].preferredImage.uri;
 
+        console.log("line 101 " + showtimesMatch);
+        console.log("line 101 " + imageMatch);
 
         if (genresMatch.includes(genresSearch)) {
             movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
 
-            console.log("line 95 " + movieGenresMatch);
+            // 78613 ACTIVE SHOW FOUR ARRAY TRY 78749 SHOW FOUR TOO
+            console.log("line 109 " + movieGenresMatch);
+            console.log("line 109 " + movieGenresMatch.length);
+
         }
     }
 
     // ADDING MATCH ONES TO NEW MOVIE ARRAY
     var newMovieArray = []
+
+    // 78749 DID NOT REACH HERE BUT 78613 SHOW FOUR WHY???
+    console.log("line 116 " + movieGenresMatch.length);
 
     for (i = 0; i < movieGenresMatch.length; i++) {
         for (y = 0; y < movieGenresMatch[i].Showtimes.length; y++) {
@@ -115,6 +129,9 @@ function addNewArray(response, zipCode, genresSearch) {
 
         }
     }
+
+    console.log("line 128 " + newMovieArray);
+
     renderMoviesResult(newMovieArray);
 }
 
@@ -159,9 +176,31 @@ function renderMoviesResult(newMovieArray) {
             $(`#${cardNumber}`).find('.theatre').text(newMovieArray[i].Theatre);
             $(`#${cardNumber}`).find('.showTime').text(newMovieArray[i].Showtimes);
             // ADDING MOVIE IMAGE WILL CHANGE TO POSTER
-            // $(`#${cardNumber}`).find('.movieThumb').attr('src', newMovieArray[i].Image);
+            $(`#${cardNumber}`).find('.movieThumb').attr('src', "http://demo.tmsimg.com/" + newMovieArray[i].Image);
 
             // ++ startCard
+
+
+            // ///// TRY ADD MOVIE POSTER HERE
+
+            // var movieMatchNoSpace = newMovieArray[i].Title.replace(/ /g, "_");;
+            // var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatchNoSpace
+            // console.log("line 168 " + omdbUrlRequest);
+
+            // $.ajax({
+            //     url: omdbUrlRequest,
+            //     method: "GET",
+            // })
+            //     .then(function (response) {
+
+            //         poster = response.Poster
+            //         console.log("line 179 " + poster);
+
+            //         // $(`#${cardNumber}`).find('.movieThumb').attr('src', "Thammarak");
+
+            //     });
+
+
 
         }
 
@@ -178,99 +217,99 @@ function renderMoviesResult(newMovieArray) {
 
 
 //// 4 /////
-function getPoster(newMovieArray) {
+// function getPoster(newMovieArray) {
 
 
-    console.log("line 155 " + newMovieArray);
-    console.log("line 155 " + newMovieArray[0].Title);
+//     console.log("line 155 " + newMovieArray);
+//     console.log("line 155 " + newMovieArray[0].Title);
 
 
-    for (var i = 0; i < newMovieArray.length; i++) {
-        // for (var i = 0; i < 1; i++) {
-        // FOR DEBUG
+//     for (var i = 0; i < newMovieArray.length; i++) {
+//         // for (var i = 0; i < 1; i++) {
+//         // FOR DEBUG
 
-        // var movieMatchNoSpace = newMovieArray[i].title.replace(/ /g, "_");
-        var movieMatchNoSpace = newMovieArray[i].Title.replace(/ /g, "_");;
-        console.log("line 165 " + movieMatchNoSpace);
+//         // var movieMatchNoSpace = newMovieArray[i].title.replace(/ /g, "_");
+//         var movieMatchNoSpace = newMovieArray[i].Title.replace(/ /g, "_");;
+//         console.log("line 165 " + movieMatchNoSpace);
 
-        var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatchNoSpace
-        console.log("line 168 " + omdbUrlRequest);
-        $.ajax({
-            url: omdbUrlRequest,
-            method: "GET",
-        })
-            .then(function (response) {
+//         var omdbUrlRequest = omdbPrefix + omdbApiKey + "&t=" + movieMatchNoSpace
+//         console.log("line 168 " + omdbUrlRequest);
+//         $.ajax({
+//             url: omdbUrlRequest,
+//             method: "GET",
+//         })
+//             .then(function (response) {
 
-                addPosterToArray(response, newMovieArray);
+//                 addPosterToArray(response, newMovieArray);
                 
-            });
-    }
+//             });
+//     }
 
-}
+// }
 
 //// 4 half /////
 
-function addPosterToArray (response, newMovieArray) {
+// function addPosterToArray (response, newMovieArray) {
 
 
 
-    for (i = 0; i < newMovieArray.length; i++) {
-        var posterUrl = response.Poster;
-        console.log("line 193 " + posterUrl);
-        newMovieArray[i].Poster = posterUrl;
+//     for (i = 0; i < newMovieArray.length; i++) {
+//         var posterUrl = response.Poster;
+//         console.log("line 193 " + posterUrl);
+//         newMovieArray[i].Poster = posterUrl;
 
-        console.log("line 197 newMovieArray[i].Poster " + newMovieArray[i].Poster);
+//         console.log("line 197 newMovieArray[i].Poster " + newMovieArray[i].Poster);
 
-    }
-
-
-    renderPoster(newMovieArray);
+//     }
 
 
-}
+//     renderPoster(newMovieArray);
+
+
+// }
 
 
 //// 5 /////
-function renderPoster(newMovieArray) {
+// function renderPoster(newMovieArray) {
 
 
-    var startCard = 0
-    var currentMovieName = "";
+//     var startCard = 0
+//     var currentMovieName = "";
     
-    for (var i = 0; i < newMovieArray.length; i++) {
+//     for (var i = 0; i < newMovieArray.length; i++) {
 
-        var movieName = newMovieArray[i].Title;
-
-
-        if (movieName !== currentMovieName) {
-            ++startCard
-        }
-
-        var cardNumber = "mov-result-" + startCard;
-        // same movie scenarios to display only one
-        if (movieName === currentMovieName) {
-            console.log("equal movieName = currentMovieName " + movieName +'='+ currentMovieName);
-            cardNumber = currentCardNumber;
-            // $(`#${cardNumber}`).find('.showTime').append("<p>" + newMovieArray[i].Theatre + "</p>");
-            // $(`#${cardNumber}`).find('.showTime').append("<p>" + newMovieArray[i].Showtimes + "</p>");
-
-        } else {
-            console.log("not equal movieName = currentMovieName " + movieName +'!='+ currentMovieName);
-            console.log("line 217 " + newMovieArray[i].Poster);
-            $(`#${cardNumber}`).find('.movieThumb').attr('src', newMovieArray[i].Poster);
-
-            // ++ startCard
-
-        }
-
-        var currentMovieName = newMovieArray[i].Title;
-        var currentCardNumber = cardNumber;
+//         var movieName = newMovieArray[i].Title;
 
 
-    }
+//         if (movieName !== currentMovieName) {
+//             ++startCard
+//         }
+
+//         var cardNumber = "mov-result-" + startCard;
+//         // same movie scenarios to display only one
+//         if (movieName === currentMovieName) {
+//             console.log("equal movieName = currentMovieName " + movieName +'='+ currentMovieName);
+//             cardNumber = currentCardNumber;
+//             // $(`#${cardNumber}`).find('.showTime').append("<p>" + newMovieArray[i].Theatre + "</p>");
+//             // $(`#${cardNumber}`).find('.showTime').append("<p>" + newMovieArray[i].Showtimes + "</p>");
+
+//         } else {
+//             console.log("not equal movieName = currentMovieName " + movieName +'!='+ currentMovieName);
+//             console.log("line 217 " + newMovieArray[i].Poster);
+//             $(`#${cardNumber}`).find('.movieThumb').attr('src', newMovieArray[i].Poster);
+
+//             // ++ startCard
+
+//         }
+
+//         var currentMovieName = newMovieArray[i].Title;
+//         var currentCardNumber = cardNumber;
 
 
-}
+//     }
+
+
+// }
 
 
 //////////////////////////// EXECUTION ////////////////////////////////////////
@@ -300,21 +339,6 @@ $("#location-button").click(function (event) {
 
     
 })
-
-
-
-
-
-
-
-// $(document).ready(() => {
-//     getMovies();
-// })
-
-// $(document).ready(() => {
-//     getPoster();
-// })
-
 
 
 ///////////////////TRYING CODE ////////////////////////
