@@ -1,7 +1,7 @@
 //////////////////////////// VARIABLES ////////////////////////////////////////
 
-// const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
-const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
+const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
+// const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
 var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?";
 // sample of request var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?genres=action&startDate=2020-11-23&zip=78613&radius=5&api_key=adsprbrpwkseeq22z6hc2386";
 
@@ -27,7 +27,10 @@ var dateSelected = "2020-11-27";
 var zipCode = "";
 
 var radius = "5";
-var currentDate = moment().format('YYYY-MM-DD');
+
+// CURRENT DATE WORKING BUT TRY USER SELECTED DATE
+// var currentDate = moment().format('YYYY-MM-DD');
+var currentDate = "";
 // console.log(currentDate);
 
 // var movieGenresMatch = [];
@@ -39,17 +42,23 @@ var poster = "";
 
 
 //// 1 /////
-function getMovies(zipCode, genresSearch) {
+function getMovies(zipCode, genresSearch, dateSearch) {
     // use ajax to get movies information
+
+    var currentDate = dateSearch;
+
 
     console.log("line 42 " + zipCode);
     console.log("line 42 " + genresSearch);
 
     // not able to search by genres need to search for all then filter by code
     // var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSelected + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi
-    var movieUrlRequest = graceNoteMoviePrefix + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi;
 
-    console.log("line 50 " + movieUrlRequest);
+    // CURRENT DATE WORKING BUT TRY USER SELECTED SDA
+    var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSearch + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi;
+
+
+    console.log("line 58 " + movieUrlRequest);
 
 
     $.ajax({
@@ -329,6 +338,36 @@ function renderMoviesResult(newMovieArray) {
 
 /////// 1 USER MUST SELECT ZIP AND GENRES FIRST BEFORE GET MOVIE RESULT ////////
 
+///// KEEP WORKING CODE START ////
+// alert("Please input your current location");
+
+// $("#location-button").click(function (event) {
+//     event.preventDefault;
+
+//     alert("Please select Movie Genres or Food Type")
+
+//     window.zipCode = $('input').val();
+//     console.log("line 270 " + zipCode);
+
+//     $(".target").change(function (event) {
+//         event.preventDefault;
+    
+//         window.genresSearch = $("#movie-selections option:selected").text();
+//         genresSearch = genresSearch.toLowerCase();
+//         console.log("line 270 " + genresSearch);
+    
+//         getMovies(zipCode, genresSearch);
+    
+//     });
+
+    
+// })
+///// KEEP WORKING CODE END ////
+
+
+///////////////////TRYING CODE ////////////////////////
+
+
 alert("Please input your current location");
 
 $("#location-button").click(function (event) {
@@ -341,19 +380,32 @@ $("#location-button").click(function (event) {
 
     $(".target").change(function (event) {
         event.preventDefault;
+
+        alert("Please select Date and Time")
+
     
         window.genresSearch = $("#movie-selections option:selected").text();
         genresSearch = genresSearch.toLowerCase();
         console.log("line 270 " + genresSearch);
     
-        getMovies(zipCode, genresSearch);
+
+        $("#date-time-submit").click(function (event) {
+            event.preventDefault;
+
+            window.dateSearch = $('#date-select').val();
+            console.log("line 387 " + dateSearch);
+            window.timeSearch = $('#time-select').val();
+            console.log("line 387 " + timeSearch);
+
+            // window.dateSelected = window.dateSearch + window.timeSearch;
+            // window.dateSelected = moment().format()
+
+
+            getMovies(zipCode, genresSearch, dateSearch);
+
+        });
     
     });
 
     
 })
-
-
-///////////////////TRYING CODE ////////////////////////
-
-

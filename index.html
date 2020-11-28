@@ -5,14 +5,23 @@
   <!-- links -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>tyndre</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet" />
+  <title>TYNDRE</title>
 
-  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+<!-- BULMA -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet" /> -->
   <!-- <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bulma-calendar@5.0.3/dist/css/bulma-calendar.min.css" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+
+
+  <!-- MAPBOX -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+
+  <!-- OUR OWN CSS -->
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 
@@ -110,7 +119,7 @@
     <div class="columns">
       <div class="column is-2">
 
-        <!-- time section -->
+        <!-- DATEPICKER -->
         <section class="section">
           <div class="container is-fluid">
             <h1 class="title">pick a time!</h1>
@@ -118,10 +127,10 @@
               choose a specific time for a special time.
             </h2>
             <label class="label">timing is everything</label>
-            <input type="date">
-            <input type="time">
+            <input id="date-select" type="date">
+            <input id="time-select" type="time">
           </div>
-          <button class="button is-dark">go!</button>
+          <button id="date-time-submit" class="button is-dark">go!</button>
         </section>
 
         <!-- food section -->
@@ -500,6 +509,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Moment JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <!-- Bulma Calendar -->
+  <!-- <script src="~bulma-calendar/dist/js/bulma-calendar.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bulma-calendar@5.0.3/dist/js/bulma-calendar.min.js"></script>
   <!-- Our jsScript -->
   <script src="script.js"></script>
 </body>
