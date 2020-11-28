@@ -30,7 +30,7 @@ var radius = "5";
 var currentDate = moment().format('YYYY-MM-DD');
 // console.log(currentDate);
 
-var movieGenresMatch = [];
+// var movieGenresMatch = [];
 var genresSearch = "Action";  // need to link this to event listener
 var poster = "";
 
@@ -77,32 +77,38 @@ function addNewArray(response, zipCode, genresSearch) {
     console.log("line 67 " + zipCode);
     console.log("line 67 " + genresSearch);
 
-    console.log("typeof genresSearch " + typeof(genresSearch));
-    console.log("line 78 " + response.length);
+    console.log("line 80 typeof genresSearch " + typeof(genresSearch));
+    console.log("line 80 " + response.length);
+
+    var movieGenresMatch = [];
 
 
-    for (i = 0; i < response.length; i++) {
-        // for (i = 0; i < 1; i++) {
+    // for (i = 0; i < response.length; i++) {
+        for (i = 0; i < 15; i++) {
         var movieMatch = response[i].title;
         // var movieMatchNoSpace = response[i].title.replace(/ /g, "_");
 
         var genresMatch = response[i].genres;
         // convert response genres to lower case to compare with user genres selected
 
+        console.log("line 92 typeof genresMatch " + typeof(genresMatch));
+        console.log("line 92 genresMatch.length " + genresMatch.length);
+
+
         for (x = 0; x < genresMatch.length; x++) {
             genresMatch[x] = genresMatch[x].toLowerCase();
         }
 
-        console.log("line 85 " + genresMatch);
-        console.log("line 85 " + genresSearch);
+        console.log("line 85 loop " + i + "genresMatch " + genresMatch);
+        console.log("line 85 loop " + i  + "genresSearch " + genresSearch);
 
         var showtimesMatch = response[i].showtimes;
         var imageMatch = response[i].preferredImage.uri;
-
-        console.log("line 101 " + showtimesMatch);
-        console.log("line 101 " + imageMatch);
+        // console.log("line 101 " + showtimesMatch);
+        // console.log("line 101 " + imageMatch);
 
         if (genresMatch.includes(genresSearch)) {
+            console.log("line 109 loop " + i + "genresMatch " + genresMatch + "has " + genresSearch);
             movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
 
             // 78613 ACTIVE SHOW FOUR ARRAY TRY 78749 SHOW FOUR TOO
@@ -110,8 +116,15 @@ function addNewArray(response, zipCode, genresSearch) {
             console.log("line 109 " + movieGenresMatch.length);
 
         }
+
+
+        console.log("line 118 " + movieGenresMatch);
+        console.log("line 118 " + movieGenresMatch.length);
     }
 
+    // THIS IS WHERE THE PROBLEM FOUND BELOW TWO VAR WAS MISSING FOR 78749 BUT 78613 WORKS
+    console.log("line 123 " + movieGenresMatch);
+    console.log("line 123 " + movieGenresMatch.length);
     // ADDING MATCH ONES TO NEW MOVIE ARRAY
     var newMovieArray = []
 
@@ -323,13 +336,13 @@ $("#location-button").click(function (event) {
 
     alert("Please select Movie Genres or Food Type")
 
-    var zipCode = $('input').val();
+    window.zipCode = $('input').val();
     console.log("line 270 " + zipCode);
 
     $(".target").change(function (event) {
         event.preventDefault;
     
-        var genresSearch = $("#movie-selections option:selected").text();
+        window.genresSearch = $("#movie-selections option:selected").text();
         genresSearch = genresSearch.toLowerCase();
         console.log("line 270 " + genresSearch);
     
