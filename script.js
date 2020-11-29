@@ -20,6 +20,13 @@ var raduis = "";
 const calendars = bulmaCalendar.attach('[type="date"]', options);
 
 
+// Loop on each calendar initialized
+calendars.forEach(calendar => {
+// Add listener to date:selected event
+calendar.on('date:selected', date => {
+console.log(date);
+});
+});
 
 //////////////////////////// FUNCTION ////////////////////////////////////////
 
@@ -53,10 +60,6 @@ function listMovies() {
         $('#movie${movieNumber}').find('.moviePic').attr('src', response[i].preferredImage.uri);
         $('#movie${movieNumber}').find('p').text(response[i].showtimes.theatre.name);
 
-
-
-
-
     }
 
 
@@ -68,8 +71,9 @@ function listMovies() {
 
 
 
-
 //////////////////////////// EXECUTION ////////////////////////////////////////
+
+
 
 // Loop on each calendar initialized
 calendars.forEach(calendar => {
@@ -78,4 +82,3 @@ calendars.forEach(calendar => {
     console.log(date);
     });
     });
-    
