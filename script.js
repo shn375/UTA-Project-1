@@ -19,6 +19,7 @@ var raduis = "";
 // Initialize all input of date type.
 const calendars = bulmaCalendar.attach('[type="date"]', options);
 
+
 // Loop on each calendar initialized
 calendars.forEach(calendar => {
 // Add listener to date:selected event
@@ -27,14 +28,43 @@ console.log(date);
 });
 });
 
-
 //////////////////////////// FUNCTION ////////////////////////////////////////
 
+// use ajax to get movies information
+function getMovies() {
+    $.ajax({
+        url: graceNoteMoviePrefix + genresSelected + dateSelected + zipCode + radius + apiKey,
+        method: "GET",
+        error: function (err) {
+            alert("The input was not found. Please check your spelling")
+            return;
+        }
+    })
+        .then(function (response) {
+            listMovies();
+        })
+     
+}
+
+
+// to display movie search result
+function listMovies() {
+
+    var moviesSearhResult = response
+    var movieNumber = 1
+
+    for (var i = 0; i < moviesSearchResult.length; i++) {
+
+        // put movies into DOM
+        $('#movie${movieNumber}').find('h5').text(response[i].title);
+        $('#movie${movieNumber}').find('.moviePic').attr('src', response[i].preferredImage.uri);
+        $('#movie${movieNumber}').find('p').text(response[i].showtimes.theatre.name);
+
+    }
 
 
 
-
-
+}
 
 
 
@@ -44,3 +74,11 @@ console.log(date);
 //////////////////////////// EXECUTION ////////////////////////////////////////
 
 
+
+// Loop on each calendar initialized
+calendars.forEach(calendar => {
+    // Add listener to date:selected event
+    calendar.on('date:selected', date => {
+    console.log(date);
+    });
+    });
