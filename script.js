@@ -151,7 +151,7 @@ function addNewArray(response, zipCode, genresSearch) {
         for (y = 0; y < movieGenresMatch[i].Showtimes.length; y++) {
 
 
-             // TRYING CONVERT 24H TO 12H
+            //  TRYING CONVERT 24H TO 12H
 
              var dateTimeBeforeConvert = movieGenresMatch[i].Showtimes[y].dateTime;
              console.log("line 155 dateTimeBeforeConvert " + dateTimeBeforeConvert);
