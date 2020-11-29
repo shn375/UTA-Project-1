@@ -1,0 +1,54 @@
+.section{
+    background-color:black;
+    margin:20px;
+    /* width: 500px;
+    margin-right: 0%; */
+    
+    
+}
+.title{
+    color:white;
+}
+.subtitle{
+    color:white;
+}
+/* Title -Tyndre */
+.title-1{
+    color:black;
+    text-shadow: 4px 4px 4px goldenrod;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-variant-caps: small-caps;
+    font-weight:900;
+    font-size:50px;
+    
+   
+}
+.subtitle-1{
+    color:turquoise;
+   
+
+    /*jumbortron image */
+}
+.hero {
+    background-image:url("./images/tony-mucci-gg7FjxkhFVY-unsplash.jpg");
+    height:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    position:relative;
+
+}
+
+    
+
+.field{
+    /* width: 400px; */
+}
+.hero-body{
+    height: 500px;
+}
+
+
+.container2{
+    background-color:black;
+}
