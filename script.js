@@ -4,15 +4,13 @@ const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
 // const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
 var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?";
 // sample of request var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?genres=action&startDate=2020-11-23&zip=78613&radius=5&api_key=adsprbrpwkseeq22z6hc2386";
+const graceNoteMoviePosterLink = "http://demo.tmsimg.com/";
 
 // var yelpApi = "9VUtXRmjC3Psh50MTKDn-lpXsZIazhjlyx88TpX6WWLCHvk-_-DuGww3FkdhLhSDpIPlFvOzMjVSsJaS1hrIbG3FYNxznVAWr_UMGM4E8DbkOzrAz5pYOQY1qUW5X3Yx"
 // var yelpApiPrefix = "https://api.yelp.com/v3/businesses/search?";
 // sample of request var yelpAPIPrefix = "https://api.yelp.com/v3/businesses/search?term=pizza&latitude=30.266666&longitude=-97.733330&apikey=kttxiZtG1Dr6SQS5GR-wLFn_d-Y4xjs0lqPoakVILmEO8UWcTXfrPZ9PV95L7-traBoAT0kEsK0vsOtq_r-CBmPLqxYYqHe-pKTh2xFNe5saVlDbTAtT0vUmiz25X3Yx";
 
-var genresSelected = "";
 var dateSelected = "";
-var zipCode = "";
-var genresSelected = "";
 var zipCode = "";
 var radius = "5";
 var genresSearch = "";
@@ -26,15 +24,7 @@ var poster = "";
 function getMovies(zipCode, genresSearch, dateTimeSearch) {
     // use ajax to get movies information
 
-    // var currentDate = dateSearch;
-
-    console.log("line 42 " + zipCode);
-    console.log("line 42 " + genresSearch);
-
-    // not able to search by genres need to search for all then filter by code
-    // var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSelected + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi
-
-    // CURRENT DATE WORKING BUT TRY USER SELECTED SDA
+    // MOVIE URL REQUEST
     var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSearch + "&startDate=" + dateTimeSearch + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi;
 
     console.log("line 58 " + movieUrlRequest);
@@ -43,13 +33,12 @@ function getMovies(zipCode, genresSearch, dateTimeSearch) {
         url: movieUrlRequest,
         method: "GET",
         error: function (err) {
-            alert("The input was not found. Please check your spelling")
+            alert("The input was not found. Please change zipcode or date")
             return;
         }
     })
         .then(function (response) {
             return addNewArray(response, zipCode, genresSearch);
-            // return addNewArray(response, genresSearch);
         })
 
 }
@@ -87,6 +76,7 @@ function addNewArray(response, zipCode, genresSearch) {
 
         var showtimesMatch = response[i].showtimes;
         var imageMatch = response[i].preferredImage.uri;
+        
 
         if (genresMatch.includes(genresSearch)) {
             console.log("line 109 loop " + i + "genresMatch " + genresMatch + "has " + genresSearch);
@@ -122,12 +112,19 @@ function addNewArray(response, zipCode, genresSearch) {
 
 
             // newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: movieGenresMatch[i].Showtimes[y].dateTime, Image: movieGenresMatch[i].Image });
-            newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: dateTimeAfterConvert, Image: movieGenresMatch[i].Image });
+
+            // THIS LINE WORKING WITHOUT TICKET LINK
+            // newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: dateTimeAfterConvert, Image: movieGenresMatch[i].Image });
+
+            // TRY ADD TICKET LINK
+            newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: dateTimeAfterConvert, Image: movieGenresMatch[i].Image, Ticket: movieGenresMatch[i].Showtimes[y].ticketURI });
 
             console.log("line 102 " + movieGenresMatch[i].Title);
             console.log("line 102 " + movieGenresMatch[i].Showtimes[y].theatre.name);
             console.log("line 102 " + movieGenresMatch[i].Showtimes[y].dateTime);
             console.log("line 102 " + movieGenresMatch[i].Image);
+            console.log("line 102 " + movieGenresMatch[i].Showtimes[y].ticketURI);
+
 
         }
     }
@@ -155,6 +152,7 @@ function renderMoviesResult(newMovieArray) {
         var movieName = newMovieArray[i].Title;
         var theatre = newMovieArray[i].Theatre;
         var imageUrl = newMovieArray[i].Image;
+        var ticketURL = newMovieArray[i].Ticket;
 
         if (movieName !== currentMovieName) {
             ++startCard
@@ -168,6 +166,12 @@ function renderMoviesResult(newMovieArray) {
             // TRY MOVE UNDER THEATRE LOOP
             $(`#${cardNumber}`).find('.showTime').append("<p>" + newMovieArray[i].Showtimes + "</p>");
 
+             // ADD LINK TO EACH SHOWTIME
+             console.log("line 161 ticketURL " + ticketURL);
+             $(`#${cardNumber}`).find('a').attr("href", ticketURL);
+             $(`#${cardNumber}`).find('#ticket-link').text("Click for ticket");
+
+
             if (theatre === currentTheatre) {
                 console.log("line 215 " + "theatre= " + theatre + "currentTheatre= " + currentTheatre );
             } else {
@@ -179,8 +183,14 @@ function renderMoviesResult(newMovieArray) {
             $(`#${cardNumber}`).find('.theatre').text(newMovieArray[i].Theatre);
             $(`#${cardNumber}`).find('.showTime').text(newMovieArray[i].Showtimes);
 
+            // ADD LINK TO EACH SHOWTIME
+            console.log("line 176 ticketURL " + ticketURL);
+            $(`#${cardNumber}`).find('a').attr("href", ticketURL);
+            $(`#${cardNumber}`).find('#ticket-link').text("Click for ticket");
+
+
             // FINALLY FOUND THE LINK TO POSTER
-            $(`#${cardNumber}`).find('.movieThumb').attr('src', "http://demo.tmsimg.com/" + newMovieArray[i].Image);
+            $(`#${cardNumber}`).find('.movieThumb').attr('src', graceNoteMoviePosterLink + newMovieArray[i].Image);
         }
 
         var currentMovieName = newMovieArray[i].Title;
@@ -247,6 +257,8 @@ $("#location-button").click(function (event) {
 
     
 })
+
+
 
 
 
