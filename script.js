@@ -1,7 +1,7 @@
 //////////////////////////// VARIABLES ////////////////////////////////////////
 
-const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
-// const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
+// const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
+const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
 var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?";
 // sample of request var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?genres=action&startDate=2020-11-23&zip=78613&radius=5&api_key=adsprbrpwkseeq22z6hc2386";
 const graceNoteMoviePosterLink = "http://demo.tmsimg.com/";
@@ -164,7 +164,9 @@ function renderMoviesResult(newMovieArray) {
             cardNumber = currentCardNumber;
 
             // TRY MOVE UNDER THEATRE LOOP
-            $(`#${cardNumber}`).find('.showTime').append("<p>" + newMovieArray[i].Showtimes + "</p>");
+            $(`#${cardNumber}`).find('.schedule').append("<p>" + newMovieArray[i].Showtimes + "</p>");
+            // ADD BUTTON
+            $(`#${cardNumber}`).find('.schedule').append('<button>Select</button>').addClass('time-select');
 
              // ADD LINK TO EACH SHOWTIME
              console.log("line 161 ticketURL " + ticketURL);
@@ -175,13 +177,18 @@ function renderMoviesResult(newMovieArray) {
             if (theatre === currentTheatre) {
                 console.log("line 215 " + "theatre= " + theatre + "currentTheatre= " + currentTheatre );
             } else {
-                $(`#${cardNumber}`).find('.showTime').append("<p>" + newMovieArray[i].Theatre + "</p>");
+                $(`#${cardNumber}`).find('.schedule').append("<p>" + newMovieArray[i].Theatre + "</p>");
             }
 
         } else {
             $(`#${cardNumber}`).find('.mov-title').text(newMovieArray[i].Title);
             $(`#${cardNumber}`).find('.theatre').text(newMovieArray[i].Theatre);
-            $(`#${cardNumber}`).find('.showTime').text(newMovieArray[i].Showtimes);
+            // $(`#${cardNumber}`).find('.schedule').text(newMovieArray[i].Showtimes);
+            $(`#${cardNumber}`).find('.schedule').append("<p>" + newMovieArray[i].Showtimes + "</p>");
+            // ADD BUTTON
+            $(`#${cardNumber}`).find('.schedule').append('<button>Select</button>').addClass('time-select');
+
+
 
             // ADD LINK TO EACH SHOWTIME
             console.log("line 176 ticketURL " + ticketURL);
