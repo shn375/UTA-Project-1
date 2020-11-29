@@ -22,7 +22,7 @@ var radius = "";
 
 // Hardcode to verify API
 var genresSelected = "";
-var dateSelected = "2020-11-27";
+// var dateSelected = "2020-11-27";
 // var zipCode = "78613";
 var zipCode = "";
 
@@ -30,7 +30,7 @@ var radius = "5";
 
 // CURRENT DATE WORKING BUT TRY USER SELECTED DATE
 // var currentDate = moment().format('YYYY-MM-DD');
-var currentDate = "";
+// var currentDate = "";
 // console.log(currentDate);
 
 // var movieGenresMatch = [];
@@ -42,10 +42,10 @@ var poster = "";
 
 
 //// 1 /////
-function getMovies(zipCode, genresSearch, dateSearch) {
+function getMovies(zipCode, genresSearch, dateTimeSearch) {
     // use ajax to get movies information
 
-    var currentDate = dateSearch;
+    // var currentDate = dateSearch;
 
 
     console.log("line 42 " + zipCode);
@@ -55,7 +55,7 @@ function getMovies(zipCode, genresSearch, dateSearch) {
     // var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSelected + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi
 
     // CURRENT DATE WORKING BUT TRY USER SELECTED SDA
-    var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSearch + "&startDate=" + currentDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi;
+    var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSearch + "&startDate=" + dateTimeSearch + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi;
 
 
     console.log("line 58 " + movieUrlRequest);
@@ -92,8 +92,8 @@ function addNewArray(response, zipCode, genresSearch) {
     var movieGenresMatch = [];
 
 
-    // for (i = 0; i < response.length; i++) {
-        for (i = 0; i < 15; i++) {
+    for (i = 0; i < response.length; i++) {
+        // for (i = 0; i < 3; i++) {
         var movieMatch = response[i].title;
         // var movieMatchNoSpace = response[i].title.replace(/ /g, "_");
 
@@ -400,8 +400,9 @@ $("#location-button").click(function (event) {
             // window.dateSelected = window.dateSearch + window.timeSearch;
             // window.dateSelected = moment().format()
 
+            window.dateTimeSearch = dateSearch + "T" + timeSearch;
 
-            getMovies(zipCode, genresSearch, dateSearch);
+            getMovies(zipCode, genresSearch, dateTimeSearch);
 
         });
     
