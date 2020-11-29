@@ -113,11 +113,18 @@ function addNewArray(response, zipCode, genresSearch) {
 
         var showtimesMatch = response[i].showtimes;
         var imageMatch = response[i].preferredImage.uri;
-        // console.log("line 101 " + showtimesMatch);
+
+
+       
+
+
         // console.log("line 101 " + imageMatch);
 
         if (genresMatch.includes(genresSearch)) {
             console.log("line 109 loop " + i + "genresMatch " + genresMatch + "has " + genresSearch);
+
+            
+
             movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
 
             // 78613 ACTIVE SHOW FOUR ARRAY TRY 78749 SHOW FOUR TOO
@@ -142,7 +149,17 @@ function addNewArray(response, zipCode, genresSearch) {
 
     for (i = 0; i < movieGenresMatch.length; i++) {
         for (y = 0; y < movieGenresMatch[i].Showtimes.length; y++) {
-            newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: movieGenresMatch[i].Showtimes[y].dateTime, Image: movieGenresMatch[i].Image });
+
+
+             // TRYING CONVERT 24H TO 12H
+
+             var dateTimeBeforeConvert = movieGenresMatch[i].Showtimes[y].dateTime;
+             console.log("line 155 dateTimeBeforeConvert " + dateTimeBeforeConvert);
+             dateTimeAfterConvert = convertTime12H(dateTimeBeforeConvert);
+
+
+            // newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: movieGenresMatch[i].Showtimes[y].dateTime, Image: movieGenresMatch[i].Image });
+            newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: dateTimeAfterConvert, Image: movieGenresMatch[i].Image });
 
             console.log("line 102 " + movieGenresMatch[i].Title);
             console.log("line 102 " + movieGenresMatch[i].Showtimes[y].theatre.name);
@@ -334,6 +351,23 @@ function renderMoviesResult(newMovieArray) {
 // }
 
 
+function convertTime12H(dateTimeBeforeConvert) {
+
+    console.log("line 345 dateTimeBeforeConvert " + dateTimeBeforeConvert);
+
+    showtimesMatch24H = dateTimeBeforeConvert.slice(11);
+    console.log("line 345 showtimesMatch24H " + showtimesMatch24H);
+
+    
+    dateTimeAfterConvert = moment(showtimesMatch24H, 'HH:mm').format('hh:mm a');
+
+    console.log("line 351 " + dateTimeAfterConvert);
+
+    return(dateTimeAfterConvert);
+
+}
+
+
 //////////////////////////// EXECUTION ////////////////////////////////////////
 
 /////// 1 USER MUST SELECT ZIP AND GENRES FIRST BEFORE GET MOVIE RESULT ////////
@@ -376,30 +410,20 @@ $("#location-button").click(function (event) {
     alert("Please select Movie Genres or Food Type")
 
     window.zipCode = $('input').val();
-    console.log("line 270 " + zipCode);
 
     $(".target").change(function (event) {
         event.preventDefault;
 
         alert("Please select Date and Time")
 
-    
         window.genresSearch = $("#movie-selections option:selected").text();
         genresSearch = genresSearch.toLowerCase();
-        console.log("line 270 " + genresSearch);
     
-
         $("#date-time-submit").click(function (event) {
             event.preventDefault;
 
             window.dateSearch = $('#date-select').val();
-            console.log("line 387 " + dateSearch);
             window.timeSearch = $('#time-select').val();
-            console.log("line 387 " + timeSearch);
-
-            // window.dateSelected = window.dateSearch + window.timeSearch;
-            // window.dateSelected = moment().format()
-
             window.dateTimeSearch = dateSearch + "T" + timeSearch;
 
             getMovies(zipCode, genresSearch, dateTimeSearch);
