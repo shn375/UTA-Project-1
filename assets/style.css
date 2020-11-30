@@ -46,7 +46,8 @@
 .container2{
     background-color:red;
 }
-image.about{
+
+  image.about{
     block-size: ;
 }
 
@@ -54,4 +55,8 @@ image.about{
 .navbar-item{
     margin: 0%;
     padding: 0%;
+=======
+=======
+.hero-head{
+    background-color: salmon;
 }
