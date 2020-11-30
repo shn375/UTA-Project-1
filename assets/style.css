@@ -1,8 +1,6 @@
 .section{
     background-color:black;
-    margin:20px;
-    
-    
+    margin:20px;    
 }
 .title{
     color:white;
@@ -17,9 +15,7 @@
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-variant-caps: small-caps;
     font-weight:900;
-    font-size:200px;
-    
-   
+    font-size:200px;    
 }
 .subtitle-1{
     color:turquoise;
@@ -36,7 +32,6 @@
     position:relative;
 
 }
-
 
 .hero-body{
     height: 500px;
@@ -55,8 +50,4 @@
 .navbar-item{
     margin: 0%;
     padding: 0%;
-=======
-=======
-.hero-head{
-    background-color: salmon;
 }
