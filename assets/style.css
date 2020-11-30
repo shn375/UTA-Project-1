@@ -1,31 +1,42 @@
 .section{
     background-color:black;
     margin:20px;  
- 
+ }
+.title{
+    color:white;
 }
+
+/* Title -Tyndre  */
+ 
+.title-1{
+        font-size: 200px;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #cf2876, 0 0 20px #cf2876, 0 0 25px #cf2876, 0 0 30px #cf2876, 0 0 35px #cf2876;
+      }
+
+.subtitle-1{
+    font-size: 100px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+}
+/* cards */
 .title{
     color:white;
 }
 .subtitle{
     color:white;
 }
-/* Title -Tyndre */
-.title-1{
-    color:white;
-    text-shadow: 4px 4px 4px red;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-variant-caps: small-caps;
-    font-weight:900;
-    font-size:200px;    
+.label{
+    color:#0073e6;
 }
-.subtitle-1{
-    color:turquoise;
    
 
     /*jumbortron image */
-}
+
 .hero {
-    background-image:url("./images/AdobeStock_91736536_Preview.jpeg");
+    background-image:url("./images/AdobeStock_97556164.jpeg");
     height:auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,43 +44,67 @@
     position:relative;
 
 }
-
 .hero-body{
     height: 500px;
 }
-
-
-.container2{
-    background-color:red;
-}
-
-
-/* logo */
-.navbar-item{
-    margin: 0%;
-    padding: 0%;
-}
-
-#map{
-    margin: 50px;
-}
-
-#fucktrump{
-    height: 350px;
-    width: 300px; 
-}
-
 .has-text-centered{
     margin-right: 20px;
     margin-left: 20px;
 
 }
 
-.navbar-item{
-    margin-right: 10px;
+/* body */
+body{
+    background-color: black;
+}
 
+
+/* team section */
+.container2{
+    background-color:black;
+}
+
+
+/* Nav */
+.navbar-item{
+    margin: 0%;
+    padding: 0%;
+    color:#cf2876;
+    background-color: black;
+    margin-right:20px;
+    font-size: 20px;
+}
+.navbar-item:hover{
+    color:green;
+    background-color:red;
+}
+
+.navbar-menu{
+    background-color: black;
+}
+
+
+/* map section */
+#map{
+    margin: 50px;
+}
+/* Date picker section */
+#fucktrump{
+        height: 350px;
+        width: 300px; 
 }
 
 html {
-    scroll-behavior: smooth;
-  }
+        scroll-behavior: smooth;
+    }
+
+  .is3{
+        color:#cf2876;
+        text-align: center;
+        font-size: 30px;
+    }
+   .is-size-1{
+        color:#cf2876;
+        text-align: center;
+        font-size: 30px;
+    }
