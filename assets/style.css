@@ -90,10 +90,21 @@ body{
 }
 /* Date picker section */
 #fucktrump{
-    height: 350px;
-    width: 300px; 
+        height: 350px;
+        width: 300px; 
 }
 
 html {
-    scroll-behavior: smooth;
-  }
+        scroll-behavior: smooth;
+    }
+
+  .is3{
+        color:#cf2876;
+        text-align: center;
+        font-size: 30px;
+    }
+   .is-size-1{
+        color:#cf2876;
+        text-align: center;
+        font-size: 30px;
+    }
