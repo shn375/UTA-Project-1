@@ -14,6 +14,7 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 </head>
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -28,11 +29,13 @@
     <a class="navbar-item">
       <img src="" width="120" height="100" alt="tyndre">
     </a>
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navbarRight" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item">
-          about
-        </a>
+        <ul>
+          <li>
+            <a class="navbar-item" href="#about">about</a>
+          </li>
+        </ul>
         <a class="navbar-item">
           team
         </a>
@@ -375,7 +378,7 @@
         </div>
       </div>
       <!-- About -->
-      <section class="section">
+      <section class="section" id="about">
         <div class="container has-text-centered">
           <div class="level">
             <div class="level-item has-text-centered"><a href="#"><figure class="image is-128x128"><img src="placeholder/pictures/bg_square.svg?primary=hsl(171, 100%, 41%)" alt=""></figure></a></div>
@@ -386,8 +389,8 @@
       </section>
       
 <!-- TEAM SECTIOn -->
-<section class="team">
-    <div class="container2 has-text-centered py-4">
+<section class="team" id="team">
+    <div class="container2 has-text-centered level-center py-4">
       <h2 class="title">the team</h2>
       <p class="subtitle1 mb-6">We are the guys that made this whole thing possible</p>
       <div class="columns is-multiline py-5">
@@ -443,7 +446,7 @@
     </div>
   </section>
   <!-- contact info -->
-  <section class="section">
+  <section class="section" id="contactInfo">
     <div class="container py-4">
       <h2 class="title has-text-centered mb-6">Contact the Pied Piper team</h2>
       <div class="columns is-vcentered">

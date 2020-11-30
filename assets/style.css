@@ -1,6 +1,7 @@
 .section{
     background-color:black;
-    margin:20px;    
+    margin:20px;  
+ 
 }
 .title{
     color:white;
@@ -42,12 +43,33 @@
     background-color:red;
 }
 
-  image.about{
-    block-size: ;
-}
 
 /* logo */
 .navbar-item{
     margin: 0%;
     padding: 0%;
 }
+
+#map{
+    margin: 50px;
+}
+
+#fucktrump{
+    height: 350px;
+    width: 300px; 
+}
+
+.has-text-centered{
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+
+.navbar-item{
+    margin-right: 10px;
+
+}
+
+html {
+    scroll-behavior: smooth;
+  }
