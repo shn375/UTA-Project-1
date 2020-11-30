@@ -2,9 +2,9 @@
 
 const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
 // const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
-var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?";
+var graceNoteMoviePrefix = "https://data.tmsapi.com/v1.1/movies/showings?";
 // sample of request var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?genres=action&startDate=2020-11-23&zip=78613&radius=5&api_key=adsprbrpwkseeq22z6hc2386";
-const graceNoteMoviePosterLink = "http://demo.tmsimg.com/";
+const graceNoteMoviePosterLink = "https://demo.tmsimg.com/";
 
 // var yelpApi = "9VUtXRmjC3Psh50MTKDn-lpXsZIazhjlyx88TpX6WWLCHvk-_-DuGww3FkdhLhSDpIPlFvOzMjVSsJaS1hrIbG3FYNxznVAWr_UMGM4E8DbkOzrAz5pYOQY1qUW5X3Yx"
 // var yelpApiPrefix = "https://api.yelp.com/v3/businesses/search?";
