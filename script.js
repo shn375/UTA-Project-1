@@ -237,9 +237,10 @@ alert("Please input your current location");
 $("#location-button").click(function (event) {
     event.preventDefault;
 
+    alert("You selected" + $('.input').val());
     alert("Please select Movie Genres or Food Type")
 
-    window.zipCode = $('input').val();
+    window.zipCode = $('.input').val();
 
     $(".target").change(function (event) {
         event.preventDefault;
