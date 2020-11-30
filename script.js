@@ -2,7 +2,7 @@
 
 const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
 // const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
-var graceNoteMoviePrefix = "https://data.tmsapi.com/v1.1/movies/showings?";
+var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?";
 // sample of request var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?genres=action&startDate=2020-11-23&zip=78613&radius=5&api_key=adsprbrpwkseeq22z6hc2386";
 const graceNoteMoviePosterLink = "https://demo.tmsimg.com/";
 
