@@ -5,7 +5,7 @@
     <!-- links -->
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>tyndre</title>
+    <title>Tyndre</title>
 
     <!-- BULMA -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
@@ -15,7 +15,7 @@
 
     <!-- FONT AWESOME -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 
     <!-- MAPBOX -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
@@ -36,18 +36,18 @@
     </div>
     <!-- logo nav bar -->
     <a class="navbar-item">
-        <img src="" width="120" height="100" alt="tyndre">
+        <img src="" width="120" height="100" alt="Tyndre">
     </a>
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
-            <a class="navbar-item">
-                about
+            <a class="navbar-item" href="#about">
+                About
             </a>
-            <a class="navbar-item">
-                team
+            <a class="navbar-item" href="#team">
+                Team
             </a>
-            <a class="navbar-item">
-                contact
+            <a class="navbar-item" href="#contactInfo">
+                Contact
             </a>
         </div>
     </div>
@@ -57,7 +57,7 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title-1 has-text-centered">
-                tyndre
+                Tyndre
             </h1>
             <h2 class="subtitle-1 is-size-7 has-text-centered has-text-weight-bold">
                 tyndre.love.care
@@ -74,7 +74,7 @@
 
         <!-- DATEPICKER -->
         <div class="column is-auto">
-            <section class="section">
+            <section class="section" id="fucktrump">
                 <div class="container is-fluid">
                     <h1 class="title">pick a time!</h1>
                     <h2 class="subtitle">
@@ -84,14 +84,13 @@
                     <input id="date-select" type="date">
                     <input id="time-select" type="time">
                 </div>
-                <button id="date-time-submit" class="button is-dark">go!</button>
             </section>
         </div> <!-- END OF DATEPICKER -->
 
 
         <!-- LOCATION SELECT -->
         <div class="column is-auto">
-            <section class="section">
+            <section class="section" id="fucktrump">
                 <div class="container is-fluid">
                   <h1 class="title">where ya' located?</h1>
                   <h2 class="subtitle">
@@ -103,15 +102,13 @@
                       <input class="input" type="text" placeholder="Input Zipcode">
                     </div>
                     <!-- THAMMARAK ADD ID -->
-                    <button id="location-button" class= "button is-dark">go!</button>
                   </div>
                 </div>
               </section>
         </div>
         <!-- Food Column -->
         <div class="column is-auto">
-            Third column
-            <section class="section">
+            <section class="section" id="fucktrump">
                 <div class="container is-fluid">
                     <h1 class="title">idc, you choose!</h1>
                     <h2 class="subtitle">
@@ -142,7 +139,7 @@
         <!-- Movie Column -->
         <div class="column is-auto">
             <!-- Fourth column -->
-            <section class="section">
+            <section class="section" id="fucktrump">
                 <div class="container is-fluid">
                     <h1 class="title">movie and chill?</h1>
                     <h2 class="subtitle">
@@ -181,6 +178,7 @@
                         </div>
                     </div>
                 </div>
+                <button id="location-button" class= "button is-dark">go!</button>
             </section>
         </div>
     </div>
@@ -199,7 +197,7 @@
                 var map = new mapboxgl.Map({
                     container: 'map',
                     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                    center: [-74.5, 40], // starting position [lng, lat]
+                    center: [-74.5, 40], // starting position [lng, lat] based on zipcode
                     zoom: 9 // starting zoom
                 });
             </script>
@@ -237,9 +235,6 @@
     </div>
     <!-- Second column MOVIE TOP CHOICE -->
     <div class="column is-one-quarter">
-        <div class=container>
-            <p>This is a section for 1st movie choice</p>
-        </div>
     </div>
     </div>
     </div>
@@ -480,7 +475,7 @@
 
 
     <!-- About -->
-    <section class="section">
+    <section class="section" id="about">
         <div class="container has-text-centered">
             <div class="level">
                 <div class="level-item has-text-centered"><a href="#">
@@ -495,10 +490,10 @@
         </div>
     </section>
 
-    <!-- TEAM SECTIOn -->
-    <section class="team">
+    <!-- TEAM SECTION -->
+    <section class="team" id="team">
         <div class="container2 has-text-centered py-4">
-            <h2 class="title">the team</h2>
+            <h2 class="title">The Team</h2>
             <p class="subtitle1 mb-6">We are the guys that made this whole thing possible</p>
             <div class="columns is-multiline py-5">
                 <div class="column is-6 is-4-widescreen mb-6">
@@ -554,7 +549,7 @@
         </div>
     </section>
     <!-- contact info -->
-    <section class="section">
+    <section class="section" id="contactInfo">
         <div class="container py-4">
             <h2 class="title has-text-centered mb-6">Contact the Pied Piper team</h2>
             <div class="columns is-vcentered">
@@ -608,93 +603,6 @@
 
 </body>
 =======
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tyndre</title>
-<link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-<link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
-<!-- Bulma Version 0.9.0-->
-<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-<link rel="stylesheet" type="text.css" href="./assets/style.css">
-
-<body>
-    <section class="hero is-info is-fullheight">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div id="navbarMenu" class="navbar-menu">
-                        <div class="navbar-start is-danger">
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined is-success is-large" href="#">
-                                    <span class="icon">
-                                        <i class="fas fa-map-marked-alt"></i>
-                                    </span>
-                                    <span>location</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined is-danger is-large" href="#">
-                                    <span class="icon">
-                                        <i class="fas fa-utensils"></i>
-                                    </span>
-                                    <span>food</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined is-success is-large" href="#">
-                                    <span class="icon">
-                                        <i class="fas fa-ticket-alt"></i>
-                                    </span>
-                                    <span>movie</span>
-                                </a>
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-4">
-                    <h1 class="title">
-                        food
-                    </h1>
-                    <h2 class="subtitle">
-                        find food for us..♥
-                    </h2>
-                    <div class="box">
-                        <div class="field is-grouped">
-                            <p class="control is-expanded">
-                                <input class="input" type="text" placeholder="Find... in your area">
-                            </p>
-                        </div>
-                        <div class="field is-grouped">
-                            <p class="control is-expanded">
-                                <input class="input" type="text" placeholder="When are we going out...">
-                            </p>
-                            <p class="control">
-                                <a class="button is-info">
-                                    <i class="fas fa-search-location"></i>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-
 
 
     <script async type="text/javascript" src="script.js"></script>
