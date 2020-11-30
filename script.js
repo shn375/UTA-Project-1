@@ -18,9 +18,8 @@ var poster = "";
 
 
 //////////////////////////// FUNCTION ////////////////////////////////////////
-
-
-//// 1 /////
+  
+  //// 1 /////
 function getMovies(zipCode, genresSearch, dateTimeSearch) {
     // use ajax to get movies information
 
@@ -167,19 +166,18 @@ function renderMoviesResult(newMovieArray) {
             $(`#${cardNumber}`).find('.schedule').append("<p>" + newMovieArray[i].Showtimes + "</p>");
             // ADD BUTTON
             $(`#${cardNumber}`).find('.schedule').append('<button>Select</button>').addClass('time-select');
-
+          
              // ADD LINK TO EACH SHOWTIME
              console.log("line 161 ticketURL " + ticketURL);
              $(`#${cardNumber}`).find('a').attr("href", ticketURL);
              $(`#${cardNumber}`).find('#ticket-link').text("Click for ticket");
-
 
             if (theatre === currentTheatre) {
                 console.log("line 215 " + "theatre= " + theatre + "currentTheatre= " + currentTheatre );
             } else {
                 $(`#${cardNumber}`).find('.schedule').append("<p>" + newMovieArray[i].Theatre + "</p>");
             }
-
+          
         } else {
             $(`#${cardNumber}`).find('.mov-title').text(newMovieArray[i].Title);
             $(`#${cardNumber}`).find('.theatre').text(newMovieArray[i].Theatre);
