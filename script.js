@@ -1,7 +1,7 @@
 //////////////////////////// VARIABLES ////////////////////////////////////////
 
-// const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
-const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
+const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
+// const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
 var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?";
 // sample of request var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?genres=action&startDate=2020-11-23&zip=78613&radius=5&api_key=adsprbrpwkseeq22z6hc2386";
 const graceNoteMoviePosterLink = "http://demo.tmsimg.com/";
@@ -62,34 +62,42 @@ function addNewArray(response, zipCode, genresSearch) {
         var genresMatch = response[i].genres;
         // convert response genres to lower case to compare with user genres selected
 
-        console.log("line 92 typeof genresMatch " + typeof(genresMatch));
-        console.log("line 92 genresMatch.length " + genresMatch.length);
+        // console.log("line 92 typeof genresMatch " + typeof(genresMatch));
+        // console.log("line 92 genresMatch.length " + genresMatch.length);
 
 
-        for (x = 0; x < genresMatch.length; x++) {
-            genresMatch[x] = genresMatch[x].toLowerCase();
+        if (genresMatch) {
+
+
+            for (x = 0; x < genresMatch.length; x++) {
+                genresMatch[x] = genresMatch[x].toLowerCase();
+            }
+    
+            // console.log("line 85 loop " + i + "genresMatch " + genresMatch);
+            // console.log("line 85 loop " + i  + "genresSearch " + genresSearch);
+    
+            var showtimesMatch = response[i].showtimes;
+            var imageMatch = response[i].preferredImage.uri;
+            
+    
+            if (genresMatch.includes(genresSearch)) {
+                console.log("line 109 loop " + i + "genresMatch " + genresMatch + "has " + genresSearch);
+    
+                movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
+    
+                // 78613 ACTIVE SHOW FOUR ARRAY TRY 78749 SHOW FOUR TOO
+                // console.log("line 109 " + movieGenresMatch);
+                // console.log("line 109 " + movieGenresMatch.length);
+    
+            }
+
+
         }
 
-        console.log("line 85 loop " + i + "genresMatch " + genresMatch);
-        console.log("line 85 loop " + i  + "genresSearch " + genresSearch);
+    
 
-        var showtimesMatch = response[i].showtimes;
-        var imageMatch = response[i].preferredImage.uri;
-        
-
-        if (genresMatch.includes(genresSearch)) {
-            console.log("line 109 loop " + i + "genresMatch " + genresMatch + "has " + genresSearch);
-
-            movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
-
-            // 78613 ACTIVE SHOW FOUR ARRAY TRY 78749 SHOW FOUR TOO
-            console.log("line 109 " + movieGenresMatch);
-            console.log("line 109 " + movieGenresMatch.length);
-
-        }
-
-        console.log("line 118 " + movieGenresMatch);
-        console.log("line 118 " + movieGenresMatch.length);
+        // console.log("line 118 " + movieGenresMatch);
+        // console.log("line 118 " + movieGenresMatch.length);
     }
 
     // THIS IS WHERE THE PROBLEM FOUND BELOW TWO VAR WAS MISSING FOR 78749 BUT 78613 WORKS
@@ -229,39 +237,64 @@ function convertTime12H(dateTimeBeforeConvert) {
 //////////////////////////// EXECUTION ////////////////////////////////////////
 
 /////// 1 USER MUST SELECT ZIP AND GENRES FIRST BEFORE GET MOVIE RESULT ////////
+/// WORKING CODE ////
+// alert("Please input your current location");
 
-alert("Please input your current location");
+// $("#location-button").click(function (event) {
+//     event.preventDefault;
+
+//     alert("You selected" + $('.input').val());
+//     alert("Please select Movie Genres or Food Type")
+
+//     window.zipCode = $('.input').val();
+
+//     $(".target").change(function (event) {
+//         event.preventDefault;
+
+//         alert("Please select Date and Time")
+
+//         window.genresSearch = $("#movie-selections option:selected").text();
+//         genresSearch = genresSearch.toLowerCase();
+    
+//         $("#date-time-submit").click(function (event) {
+//             event.preventDefault;
+
+//             window.dateSearch = $('#date-select').val();
+//             window.timeSearch = $('#time-select').val();
+//             window.dateTimeSearch = dateSearch + "T" + timeSearch;
+
+//             getMovies(zipCode, genresSearch, dateTimeSearch);
+
+//         });
+    
+//     });
+
+    
+// })
+
+
+
 
 $("#location-button").click(function (event) {
-    event.preventDefault;
 
-    alert("You selected" + $('.input').val());
-    alert("Please select Movie Genres or Food Type")
+    // alert("You selected zipCode " + $('.input').val());
+    // alert("You selected genres " + $("#movie-selections option:selected").text());
+    // alert("You selected dateSearch " + $('#date-select').val());
+    // alert("You selected timeSearch " + $('#time-select').val());
+
+    event.preventDefault;
 
     window.zipCode = $('.input').val();
 
-    $(".target").change(function (event) {
-        event.preventDefault;
+    window.genresSearch = $("#movie-selections option:selected").text();
+    genresSearch = genresSearch.toLowerCase();
 
-        alert("Please select Date and Time")
+    window.dateSearch = $('#date-select').val();
+    window.timeSearch = $('#time-select').val();
+    window.dateTimeSearch = dateSearch + "T" + timeSearch;
 
-        window.genresSearch = $("#movie-selections option:selected").text();
-        genresSearch = genresSearch.toLowerCase();
-    
-        $("#date-time-submit").click(function (event) {
-            event.preventDefault;
+    getMovies(zipCode, genresSearch, dateTimeSearch);
 
-            window.dateSearch = $('#date-select').val();
-            window.timeSearch = $('#time-select').val();
-            window.dateTimeSearch = dateSearch + "T" + timeSearch;
-
-            getMovies(zipCode, genresSearch, dateTimeSearch);
-
-        });
-    
-    });
-
-    
 })
 
 
