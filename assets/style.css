@@ -13,7 +13,7 @@
 /* Title -Tyndre */
 .title-1{
     color:white;
-    text-shadow: 4px 4px 4px goldenrod;
+    text-shadow: 4px 4px 4px red;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-variant-caps: small-caps;
     font-weight:900;
@@ -46,6 +46,16 @@
 .container2{
     background-color:red;
 }
+
+  image.about{
+    block-size: ;
+}
+
+/* logo */
+.navbar-item{
+    margin: 0%;
+    padding: 0%;
+=======
 =======
 .hero-head{
     background-color: salmon;
