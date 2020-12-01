@@ -200,7 +200,7 @@ function getFoodCuisine() {
 
 function getRestaurant(foodCuisine) {
     var cityID = "";
-    var zipCodeApiURL = `http://api.zippopotam.us/us/${zipCode}`;
+    var zipCodeApiURL = `https://api.zippopotam.us/us/${zipCode}`;
 
 
     $.ajax({
