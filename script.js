@@ -1,6 +1,6 @@
 //////////////////////////// VARIABLES ////////////////////////////////////////
 
-const graceNoteMovieApi = "adsprbrpwkseeq22z6hc2386";  //Thammarak account1
+const graceNoteMovieApi = "xw2s7tehhm97h56k9v6qkeyk";  //Thammarak account1
 // const graceNoteMovieApi = "jf2p6cj9xp8pspnqcjg44rc9";  //Thammarak account2
 var graceNoteMoviePrefix = "https://data.tmsapi.com/v1.1/movies/showings?";
 // sample of request var graceNoteMoviePrefix = "http://data.tmsapi.com/v1.1/movies/showings?genres=action&startDate=2020-11-23&zip=78613&radius=5&api_key=adsprbrpwkseeq22z6hc2386";
@@ -26,7 +26,7 @@ function getMovies(zipCode, genresSearch, dateTimeSearch) {
     // MOVIE URL REQUEST
     var movieUrlRequest = graceNoteMoviePrefix + "genres="+ genresSearch + "&startDate=" + dateTimeSearch + "&zip=" + zipCode + "&radius=" + radius + "&api_key=" + graceNoteMovieApi;
 
-    console.log("line 58 " + movieUrlRequest);
+    //console.log("line 58 " + movieUrlRequest);
 
     $.ajax({
         url: movieUrlRequest,
@@ -46,11 +46,11 @@ function getMovies(zipCode, genresSearch, dateTimeSearch) {
 function addNewArray(response, zipCode, genresSearch) {
     // FILTER ONLY GENRES THAT MATCH SELECTED AND PUSH INTO NEW ARRAY newMovieArray
 
-    console.log("line 67 " + zipCode);
-    console.log("line 67 " + genresSearch);
+    // console.log("line 67 " + zipCode);
+    // console.log("line 67 " + genresSearch);
 
-    console.log("line 80 typeof genresSearch " + typeof(genresSearch));
-    console.log("line 80 " + response.length);
+    // console.log("line 80 typeof genresSearch " + typeof(genresSearch));
+    // console.log("line 80 " + response.length);
 
     var movieGenresMatch = [];
 
@@ -81,7 +81,7 @@ function addNewArray(response, zipCode, genresSearch) {
             
     
             if (genresMatch.includes(genresSearch)) {
-                console.log("line 109 loop " + i + "genresMatch " + genresMatch + "has " + genresSearch);
+                //console.log("line 109 loop " + i + "genresMatch " + genresMatch + "has " + genresSearch);
     
                 movieGenresMatch.push({ Title: movieMatch, Genres: genresSearch, Showtimes: showtimesMatch, Image: imageMatch });
     
@@ -101,20 +101,20 @@ function addNewArray(response, zipCode, genresSearch) {
     }
 
     // THIS IS WHERE THE PROBLEM FOUND BELOW TWO VAR WAS MISSING FOR 78749 BUT 78613 WORKS
-    console.log("line 123 " + movieGenresMatch);
-    console.log("line 123 " + movieGenresMatch.length);
+    // console.log("line 123 " + movieGenresMatch);
+    // console.log("line 123 " + movieGenresMatch.length);
     // ADDING MATCH ONES TO NEW MOVIE ARRAY
     var newMovieArray = []
 
     // 78749 DID NOT REACH HERE BUT 78613 SHOW FOUR WHY???
-    console.log("line 116 " + movieGenresMatch.length);
+   // console.log("line 116 " + movieGenresMatch.length);
 
     for (i = 0; i < movieGenresMatch.length; i++) {
         for (y = 0; y < movieGenresMatch[i].Showtimes.length; y++) {
 
             //  TRYING CONVERT 24H TO 12H
              var dateTimeBeforeConvert = movieGenresMatch[i].Showtimes[y].dateTime;
-             console.log("line 155 dateTimeBeforeConvert " + dateTimeBeforeConvert);
+             //console.log("line 155 dateTimeBeforeConvert " + dateTimeBeforeConvert);
              dateTimeAfterConvert = convertTime12H(dateTimeBeforeConvert);
 
 
@@ -126,17 +126,17 @@ function addNewArray(response, zipCode, genresSearch) {
             // TRY ADD TICKET LINK
             newMovieArray.push({ Title: movieGenresMatch[i].Title, Theatre: movieGenresMatch[i].Showtimes[y].theatre.name, Showtimes: dateTimeAfterConvert, Image: movieGenresMatch[i].Image, Ticket: movieGenresMatch[i].Showtimes[y].ticketURI });
 
-            console.log("line 102 " + movieGenresMatch[i].Title);
-            console.log("line 102 " + movieGenresMatch[i].Showtimes[y].theatre.name);
-            console.log("line 102 " + movieGenresMatch[i].Showtimes[y].dateTime);
-            console.log("line 102 " + movieGenresMatch[i].Image);
-            console.log("line 102 " + movieGenresMatch[i].Showtimes[y].ticketURI);
+            // console.log("line 102 " + movieGenresMatch[i].Title);
+            // console.log("line 102 " + movieGenresMatch[i].Showtimes[y].theatre.name);
+            // console.log("line 102 " + movieGenresMatch[i].Showtimes[y].dateTime);
+            // console.log("line 102 " + movieGenresMatch[i].Image);
+            // console.log("line 102 " + movieGenresMatch[i].Showtimes[y].ticketURI);
 
 
         }
     }
 
-    console.log("line 128 " + newMovieArray);
+    //console.log("line 128 " + newMovieArray);
 
     renderMoviesResult(newMovieArray);
 }
@@ -147,7 +147,7 @@ function addNewArray(response, zipCode, genresSearch) {
 function renderMoviesResult(newMovieArray) {
     // to display movie search result
 
-    console.log("line 175 " + newMovieArray);
+    //console.log("line 175 " + newMovieArray);
     var startCard = 0
     var currentMovieName = "";
     var currentTheatre = "";
@@ -176,12 +176,12 @@ function renderMoviesResult(newMovieArray) {
             $(`#${cardNumber}`).find('.schedule').append('<button>Select</button>').addClass('time-select');
           
              // ADD LINK TO EACH SHOWTIME
-             console.log("line 161 ticketURL " + ticketURL);
+             //console.log("line 161 ticketURL " + ticketURL);
              $(`#${cardNumber}`).find('a').attr("href", ticketURL);
              $(`#${cardNumber}`).find('#ticket-link').text("Click for ticket");
 
             if (theatre === currentTheatre) {
-                console.log("line 215 " + "theatre= " + theatre + "currentTheatre= " + currentTheatre );
+               // console.log("line 215 " + "theatre= " + theatre + "currentTheatre= " + currentTheatre );
             } else {
                 $(`#${cardNumber}`).find('.schedule').append("<p>" + newMovieArray[i].Theatre + "</p>");
             }
@@ -197,7 +197,7 @@ function renderMoviesResult(newMovieArray) {
 
 
             // ADD LINK TO EACH SHOWTIME
-            console.log("line 176 ticketURL " + ticketURL);
+            //console.log("line 176 ticketURL " + ticketURL);
             $(`#${cardNumber}`).find('a').attr("href", ticketURL);
             $(`#${cardNumber}`).find('#ticket-link').text("Click for ticket");
 
@@ -219,61 +219,51 @@ function renderMoviesResult(newMovieArray) {
 
 function convertTime12H(dateTimeBeforeConvert) {
 
-    console.log("line 345 dateTimeBeforeConvert " + dateTimeBeforeConvert);
+    //console.log("line 345 dateTimeBeforeConvert " + dateTimeBeforeConvert);
 
     showtimesMatch24H = dateTimeBeforeConvert.slice(11);
-    console.log("line 345 showtimesMatch24H " + showtimesMatch24H);
+    //console.log("line 345 showtimesMatch24H " + showtimesMatch24H);
 
     
     dateTimeAfterConvert = moment(showtimesMatch24H, 'HH:mm').format('hh:mm a');
 
-    console.log("line 351 " + dateTimeAfterConvert);
+    // console.log("line 351 " + dateTimeAfterConvert);
 
     return(dateTimeAfterConvert);
 
 }
 
 
+function getFoodCuisine(){
+    
+    var foodCuisine = $('#foodCuisines option:selected').text();
+    foodCuisine.toLowerCase();
+
+    getRestaurant(foodCuisine);
+    
+return foodCuisine;
+}
+
+function getRestaurant(foodCuisine){
+    var cityID = "";
+    var zomatoURL = `https://developers.zomato.com/api/v2.1/search?entity_id=$278&entity_type=city&q=${foodCuisine}&count=4&apikey=8d7d2f5f69ede05c41b4571b85670193`
+        $.ajax({
+            url: zomatoURL,
+            method: "GET",  
+        }).then(function(response) {
+                for(var i = 0; i < response.restaurants.length;i++){
+                    //console.log(response.restaurants[i].restaurant.location.address);
+                    $('#restaurant-result-' + i).find('.restaurant-title').text(response.restaurants[i].restaurant.name);
+                    $('#restaurant-result-' + i).find('.restaurantThumb').attr("src", response.restaurants[i].restaurant.thumb);
+                    $('#restaurant-result-' + i).find('.schedule').text(response.restaurants[i].restaurant.location.address);
+                    $('#restaurant-result-' + i).find('.asdf').text(response.restaurants[i].restaurant.phone_numbers);
+                    $('#restaurant-result-' + i).find('.qwert').text(response.restaurants[i].restaurant.timings);
+
+               }
+        })
+    }
+
 //////////////////////////// EXECUTION ////////////////////////////////////////
-
-/////// 1 USER MUST SELECT ZIP AND GENRES FIRST BEFORE GET MOVIE RESULT ////////
-/// WORKING CODE ////
-// alert("Please input your current location");
-
-// $("#location-button").click(function (event) {
-//     event.preventDefault;
-
-//     alert("You selected" + $('.input').val());
-//     alert("Please select Movie Genres or Food Type")
-
-//     window.zipCode = $('.input').val();
-
-//     $(".target").change(function (event) {
-//         event.preventDefault;
-
-//         alert("Please select Date and Time")
-
-//         window.genresSearch = $("#movie-selections option:selected").text();
-//         genresSearch = genresSearch.toLowerCase();
-    
-//         $("#date-time-submit").click(function (event) {
-//             event.preventDefault;
-
-//             window.dateSearch = $('#date-select').val();
-//             window.timeSearch = $('#time-select').val();
-//             window.dateTimeSearch = dateSearch + "T" + timeSearch;
-
-//             getMovies(zipCode, genresSearch, dateTimeSearch);
-
-//         });
-    
-//     });
-
-    
-// })
-
-
-
 
 $("#location-button").click(function (event) {
 
@@ -294,6 +284,7 @@ $("#location-button").click(function (event) {
     window.dateTimeSearch = dateSearch + "T" + timeSearch;
 
     getMovies(zipCode, genresSearch, dateTimeSearch);
+    getFoodCuisine();
 
 })
 
