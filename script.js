@@ -265,28 +265,32 @@ function getRestaurant(foodCuisine){
 
 //////////////////////////// EXECUTION ////////////////////////////////////////
 
-$("#location-button").click(function (event) {
+$( document ).ready(function() {
 
-    // alert("You selected zipCode " + $('.input').val());
-    // alert("You selected genres " + $("#movie-selections option:selected").text());
-    // alert("You selected dateSearch " + $('#date-select').val());
-    // alert("You selected timeSearch " + $('#time-select').val());
+    $("#location-button").click(function (event) {
 
-    event.preventDefault;
+        // alert("You selected zipCode " + $('.input').val());
+        // alert("You selected genres " + $("#movie-selections option:selected").text());
+        // alert("You selected dateSearch " + $('#date-select').val());
+        // alert("You selected timeSearch " + $('#time-select').val());
 
-    window.zipCode = $('.input').val();
+        event.preventDefault;
 
-    window.genresSearch = $("#movie-selections option:selected").text();
-    genresSearch = genresSearch.toLowerCase();
+        window.zipCode = $('.input').val();
 
-    window.dateSearch = $('#date-select').val();
-    window.timeSearch = $('#time-select').val();
-    window.dateTimeSearch = dateSearch + "T" + timeSearch;
+        window.genresSearch = $("#movie-selections option:selected").text();
+        genresSearch = genresSearch.toLowerCase();
 
-    getMovies(zipCode, genresSearch, dateTimeSearch);
-    getFoodCuisine();
+        window.dateSearch = $('#date-select').val();
+        window.timeSearch = $('#time-select').val();
+        window.dateTimeSearch = dateSearch + "T" + timeSearch;
 
-})
+        getMovies(zipCode, genresSearch, dateTimeSearch);
+        getFoodCuisine();
+
+    })
+
+});
 
 
 
